@@ -1,4 +1,4 @@
-# DesafiosBecaMoniqueParente
+# DesafiosBeca-MoniqueParente
 
 NTT DATA
 Desafio Beca
