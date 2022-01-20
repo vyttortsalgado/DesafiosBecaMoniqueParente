@@ -1,7 +1,6 @@
 # DesafiosBeca-MoniqueParente
 
-NTT DATA
-Desafio Beca
+# Desafio(1) Beca : Modelo Conceitual
 
 Nome: Monique Parente Lima.|
 Categoria: CJ Junior – Center.| 
@@ -25,6 +24,8 @@ Algumas dicas para estruturação de um sistema, pensar de forma objetiva, escol
 A aplicação MP Peças tem como objetivo proporcionar a venda de produtos que integram a montagem de um computador e seus periféricos.
 	Escopo do Produto
 O produto final consiste no site MP Peças a aplicação proporciona ao proprietário de um estabelecimento cadastrar produtos e que o funcionário realize vendas.
+
+![MODELOCONCEITUALWORKBENCH.PNG](MODELOCONCEITUALWORKBENCH.PNG)
  
  IDE utilizada na modelagem: Workbench.
 
