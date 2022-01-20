@@ -2,7 +2,6 @@
 
 # Desafio(1) Beca : Modelo Conceitual
 
-
 Nome: Monique Parente Lima.|
 Categoria: CJ Junior – Center.| 
 Mentor: Flavius Gama.
