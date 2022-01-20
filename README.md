@@ -28,7 +28,7 @@ A aplicação MP Peças tem como objetivo proporcionar a venda de produtos que i
 	Escopo do Produto
 O produto final consiste no site MP Peças a aplicação proporciona ao proprietário de um estabelecimento cadastrar produtos e que o funcionário realize vendas.
 
-![MODELOCONCEITUALWORKBENCH.png](MODELOCONCEITUAL-WORKBENCH.png)
+![MODELOCONCEITUALWORKBENCH.png](MODELOCONCEITUALWORKBENCH.png)
  
  IDE utilizada na modelagem: Workbench.
 
