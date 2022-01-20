@@ -3,65 +3,16 @@
 NTT DATA
 Desafio Beca
 
-Nome: Monique Parente Lima.
-Categoria: CJ Junior – Center.
+Nome: Monique Parente Lima.|
+Categoria: CJ Junior – Center.| 
 Mentor: Flavius Gama.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+______________________________________________________________________________________________________________________________________________________________________________
 1.	Pensamentos Iniciais de Estruturação.
 2.	Resumo da aplicação.
 3.	Modelagem de dados.
 4.	Ferramentas.
 5.	Frameworks.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Ass: Monique Parente Lima.
-
-
+______________________________________________________________________________________________________________________________________________________________________________
 1.	Pensamentos Iniciais de Estruturação.
 
 Para introduzir alguns pensamentos nesse tópico devemos planejar algumas estratégias que de início podem parecer imaturas porém vão se tornar mais concretas, ágeis e compactas para evitar erros de execução.  
