@@ -16,20 +16,21 @@ ________________________________________________________________________________
 
 Para introduzir alguns pensamentos nesse tópico devemos planejar algumas estratégias que de início podem parecer imaturas porém vão se tornar mais concretas, ágeis e compactas para evitar erros de execução.  
 
-Algumas dicas para estruturação de um sistema, pensar de forma objetiva, escolher um substantivo adequado para definir uma entidade, utilizar de raciocínio lógico inspirado em programação orienta objeto e por fim verificar a normalização. Existem diversos ambientes nos quais podem ser utilizados para realizar um Modelo de Entidade Relacional (MER), alguns exemplos: Workbench, BrModelo, Draw.oi, entre outros.
+Algumas dicas para estruturação de um sistema, pensar de forma objetiva, escolher um substantivo adequado para definir uma entidade, utilizar de raciocínio lógico inspirado em programação orienta objeto e por fim verificar a normalização. Existem diversos ambientes nos quais podem ser utilizados para realizar um Modelo de Entidade Relacional (MER), alguns exemplos: BrModelo, Draw.oi, entre outros.
 
 2.	Resumo da Aplicação
 
 	Plano de Negócios.
-A aplicação MP Peças tem como objetivo proporcionar a venda de produtos que integram a montagem de um computador e seus periféricos.
+A aplicação MP Peças tem como objetivo proporcionar a venda de produto que integra a montagem de um computador.
 	Escopo do Produto
-O produto final consiste no site MP Peças a aplicação proporciona ao proprietário de um estabelecimento cadastrar produtos e que o funcionário realize vendas.
+O produto final MP Peças consiste em uma aplicação para vendas.
+As funções da aplicação consistem em cadastrar uma venda relacionada com os cadastros relacionados aos atributos das classes vendedor, cliente ,item venda e produto.   
 
-![MODELOCONCEITUALWORKBENCH.PNG](MODELOCONCEITUALWORKBENCH.PNG)
+![DIAGRAMACONCEITUALOFICIAL.PNG](DIAGRAMACONCEITUALOFICIAL.PNG)
  
- IDE utilizada na modelagem: Workbench.
+ IDE utilizada na modelagem: Draw.io.
 
-Conclusão, o usuário deste site poderá efetuar uma venda enquanto entrar em contato com o site através da classe venda, poderá pesquisar se um produto existe em estoque para assim poder solicitar que a classe produto ligada a estoque retorne a classe venda a informação de código referente ao produto pesquisado, dessa forma a partir da classe venda com o código do produto validado no estoque vai ser possível adicionar ao carrinho para finalização da venda.
+Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadastros nos domínios, vendedor, cliente, item de venda e produto que constarão no sistema.
 •	Premissas: 
 - Aplicação será desenvolvida de Segunda-Feira às Sextas-Feiras em horário comercial.
 •	Restrições:
@@ -38,7 +39,8 @@ Conclusão, o usuário deste site poderá efetuar uma venda enquanto entrar em c
 3.	Ferramentas
 - GitHub.
 - Intelij.
-- Workbench.
+- Draw.io.
+- Postman
 
 4.	Frameworks
 - JPA.
