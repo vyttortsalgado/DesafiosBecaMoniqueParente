@@ -31,8 +31,10 @@ As funções da aplicação consistem em cadastrar uma venda relacionada com os 
  IDE utilizada na modelagem: Draw.io.
 
 Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadastros nos domínios, vendedor, cliente, item de venda e produto que constarão no sistema.
+
 •	Premissas: 
 - Aplicação será desenvolvida de Segunda-Feira às Sextas-Feiras em horário comercial.
+
 •	Restrições:
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
