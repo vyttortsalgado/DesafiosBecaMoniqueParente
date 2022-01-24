@@ -32,18 +32,18 @@ As funções da aplicação consistem em cadastrar uma venda relacionada com os 
 
 Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadastros nos domínios, vendedor, cliente, item de venda e produto que constarão no sistema.
 
-•	Premissas: 
+  •	Premissas: 
 - Aplicação será desenvolvida de Segunda-Feira às Sextas-Feiras em horário comercial.
 
-•	Restrições:
+  •	Restrições:
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
-3.	Ferramentas
+  3.	Ferramentas
 - GitHub.
 - Intelij.
 - Draw.io.
 - Postman
 
-4.	Frameworks
+  4.	Frameworks
 - JPA.
 - Sprint Boot.
