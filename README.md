@@ -35,7 +35,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
   •	Premissas: 
 - Aplicação será desenvolvida de Segunda-Feira às Sextas-Feiras em horário comercial.
 
-  •	Restrições:
+ •	Restrições:
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
 3.	Ferramentas
