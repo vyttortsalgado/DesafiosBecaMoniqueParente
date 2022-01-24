@@ -20,7 +20,8 @@ Algumas dicas para estruturação de um sistema, pensar de forma objetiva, escol
 
 2.	Resumo da Aplicação
 
-	Plano de Negócios.
+Plano de Negócios.
+
 A aplicação MP Peças tem como objetivo proporcionar a venda de produto que integra a montagem de um computador.
 	Escopo do Produto
 O produto final MP Peças consiste em uma aplicação para vendas.
