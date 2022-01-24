@@ -11,13 +11,15 @@ import java.util.List;
 public class VendedorController {
 
     @PostMapping
-    public Vendedor Criar(Vendedor vendedor){
+    public ResponseEntity<Vendedor> criar (@RequestBody Vendedor vendedor){
         vendedor.setId(1);
-        return vendedor;
+
+        System.out.println(vendedor);
+        return ResponseEntity.created(null).body(vendedor);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Vendedor> Atualizar(@RequestBody Vendedor vendedor, @PathVariable Integer id){
+    public ResponseEntity<Vendedor> atualizar (@RequestBody Vendedor vendedor, @PathVariable Integer id){
         vendedor.setId(id);
         System.out.println(vendedor);
         return ResponseEntity.ok(vendedor);
@@ -25,7 +27,7 @@ public class VendedorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Vendedor> Deletar(@PathVariable Integer id) {
+    public ResponseEntity<Vendedor> deletar (@PathVariable Integer id) {
 
         return ResponseEntity.noContent().build();
     }
@@ -49,7 +51,7 @@ public class VendedorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vendedor> Obter(@PathVariable Integer id){
+    public ResponseEntity<Vendedor> obter (@PathVariable Integer id){
         System.out.println("Obterve id: " +id);
 
         Vendedor vendedor1 = new Vendedor();

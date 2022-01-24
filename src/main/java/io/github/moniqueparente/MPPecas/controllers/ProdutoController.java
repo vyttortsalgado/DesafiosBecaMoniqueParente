@@ -11,8 +11,7 @@ import java.util.List;
 public class ProdutoController {
 
     @PostMapping
-    public ResponseEntity<Produto> criar
-            (@RequestBody Produto produto){
+    public ResponseEntity<Produto> criar (@RequestBody Produto produto){
         produto.setId(1);
 
         System.out.println(produto);
@@ -20,7 +19,7 @@ public class ProdutoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Produto> Atualizar(@RequestBody Produto produto, @PathVariable Integer id){
+    public ResponseEntity<Produto> atualizar (@RequestBody Produto produto, @PathVariable Integer id){
         produto.setId(id);
         System.out.println(produto);
         return ResponseEntity.ok(produto);
@@ -28,7 +27,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Produto> Deletar(@PathVariable Integer id) {
+    public ResponseEntity<Produto> deletar (@PathVariable Integer id) {
         return ResponseEntity.noContent().build();
     }
 
@@ -54,7 +53,7 @@ public class ProdutoController {
     }
 
         @GetMapping("/{id}")
-        public ResponseEntity<Produto> Obter(@PathVariable Integer id){
+        public ResponseEntity<Produto> obter (@PathVariable Integer id){
             System.out.println("Obterve id: " +id);
 
             Produto produto1 = new Produto();

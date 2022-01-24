@@ -11,8 +11,7 @@ import java.util.List;
 public class ClienteController {
 
     @PostMapping
-    public ResponseEntity<Cliente> criar
-            (@RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> criar (@RequestBody Cliente cliente) {
         cliente.setId(1);
 
         System.out.println(cliente);
@@ -20,7 +19,7 @@ public class ClienteController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Cliente> Atualizar(@RequestBody Cliente cliente, @PathVariable Integer id){
+    public ResponseEntity<Cliente> atualizar (@RequestBody Cliente cliente, @PathVariable Integer id){
         cliente.setId(id);
         System.out.println(cliente);
         return ResponseEntity.ok(cliente);
@@ -28,7 +27,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Cliente> Deletar(@PathVariable Integer id) {
+    public ResponseEntity<Cliente> deletar (@PathVariable Integer id) {
         return ResponseEntity.noContent().build();
     }
 
@@ -54,7 +53,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> Obter(@PathVariable Integer id) {
+    public ResponseEntity<Cliente> obter (@PathVariable Integer id) {
         System.out.println("Obterve id: " + id);
 
         Cliente cliente1 = new Cliente();

@@ -28,8 +28,7 @@ public class VendaController {
     ItemVenda itemv3 = new ItemVenda(3,300.00,1, produto3);
 
     @PostMapping
-    public ResponseEntity<Venda> criar
-            (@RequestBody Venda venda){
+    public ResponseEntity<Venda> criar (@RequestBody Venda venda){
         venda.setId(1);
 
         System.out.println(venda);
@@ -37,7 +36,7 @@ public class VendaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Venda> Atualizar(@RequestBody Venda venda, @PathVariable Integer id){
+    public ResponseEntity<Venda> atualizar (@RequestBody Venda venda, @PathVariable Integer id){
         venda.setId(id);
         System.out.println(venda);
         return ResponseEntity.ok(venda);
@@ -45,7 +44,7 @@ public class VendaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Venda> Deletar(@PathVariable Integer id) {
+    public ResponseEntity<Venda> deletar (@PathVariable Integer id) {
         return ResponseEntity.noContent().build();
     }
 
@@ -95,7 +94,7 @@ public class VendaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Venda> Obter(@PathVariable Integer id){
+    public ResponseEntity<Venda> obter (@PathVariable Integer id){
         System.out.println("Obterve id: " +id);
 
         List<ItemVenda> itemVendaLista = Arrays.asList(itemv1);
