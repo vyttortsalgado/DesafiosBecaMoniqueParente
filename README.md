@@ -38,12 +38,12 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
   •	Restrições:
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
-  3.	Ferramentas
+3.	Ferramentas
 - GitHub.
 - Intelij.
 - Draw.io.
 - Postman
 
-  4.	Frameworks
+4.	Frameworks
 - JPA.
 - Sprint Boot.
