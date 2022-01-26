@@ -1,6 +1,8 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
+import io.github.moniqueparente.MPPecas.services.ProdutoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,60 +12,45 @@ import java.util.List;
 @RequestMapping("/produto")
 public class ProdutoController {
 
-    @PostMapping
-    public ResponseEntity<Produto> criar (@RequestBody Produto produto){
-        produto.setId(1);
+    @Autowired
+    private ProdutoService produtoService;
 
-        System.out.println(produto);
-        return ResponseEntity.created(null).body(produto);
+    @PostMapping
+    public ResponseEntity<Produto> criar(@RequestBody Produto produto){
+        Produto produtoCriado = produtoService.criar(produto);
+
+        return ResponseEntity.created(null).body(produtoCriado);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Produto> atualizar (@RequestBody Produto produto, @PathVariable Integer id){
-        produto.setId(id);
-        System.out.println(produto);
-        return ResponseEntity.ok(produto);
+    public ResponseEntity<Produto> atualizar(@RequestBody Produto produto, @PathVariable Integer id){
+        Produto produtoAtualizado = produtoService.atualizar(produto,id);
+
+        return ResponseEntity.ok(produtoAtualizado);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Produto> deletar (@PathVariable Integer id) {
+    public ResponseEntity<Produto> deletar(@PathVariable Integer id) {
+        produtoService.deletar(id);
+
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping()
-    public ResponseEntity<List<Produto>> Listar() {
+    public ResponseEntity<List<Produto>> Listar(){
+        List<Produto> produtoListado = produtoService.listar();
 
-        Produto produto1 = new Produto();
-            produto1.setId(1);
-            produto1.setNome("Teclado");
-            produto1.setMarca("Redragon");
 
-        Produto produto2 = new Produto();
-            produto2.setId(2);
-            produto2.setNome("Notebook");
-            produto2.setMarca("Alienware");
-
-        Produto produto3 = new Produto();
-            produto3.setId(3);
-            produto3.setNome("Mouse");
-            produto3.setMarca("Dell");
-
-        return ResponseEntity.ok(List.of(produto1, produto2, produto3));
+        return ResponseEntity.ok(produtoListado);
     }
 
-        @GetMapping("/{id}")
-        public ResponseEntity<Produto> obter (@PathVariable Integer id){
-            System.out.println("Obterve id: " +id);
+    @GetMapping("/{id}")
+    public ResponseEntity<Produto> obter(@PathVariable Integer id){
+        Produto produtoObtido = produtoService.obter(id);
 
-            Produto produto1 = new Produto();
-                produto1.setId(1);
-                produto1.setNome("Teclado");
-                produto1.setMarca("Redragon");
-
-            return  ResponseEntity.ok(produto1);
-
-        }
+        return  ResponseEntity.ok(produtoObtido);
 
     }
 
+}

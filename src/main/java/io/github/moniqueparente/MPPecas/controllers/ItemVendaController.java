@@ -1,7 +1,8 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
-import io.github.moniqueparente.MPPecas.domains.Produto;
+import io.github.moniqueparente.MPPecas.services.ItemVendaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,67 +12,43 @@ import java.util.List;
 @RequestMapping("/itemvenda")
 public class ItemVendaController {
 
-    Produto produto1 = new Produto(1,"Teclado","Redragon");
-    Produto produto2 = new Produto(2,"Notebook", "Alienware");
-    Produto produto3 = new Produto(3,"Mouse", "Dell");
+    @Autowired
+    private ItemVendaService itemVendaService;
 
     @PostMapping
-    public ResponseEntity<ItemVenda> criar (@RequestBody ItemVenda itemVenda){
-        itemVenda.setId(1);
+    public ResponseEntity<ItemVenda> criar(@RequestBody ItemVenda itemVenda){
+        ItemVenda itemVendaCriado = itemVendaService.criar(itemVenda);
 
-        System.out.println(itemVenda);
-        return ResponseEntity.created(null).body(itemVenda);
+        return ResponseEntity.created(null).body(itemVendaCriado);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ItemVenda> atualizar (@RequestBody ItemVenda itemVenda, @PathVariable Integer id){
-        itemVenda.setId(id);
-        System.out.println(itemVenda);
-        return ResponseEntity.ok(itemVenda);
+    public ResponseEntity<ItemVenda> atualizar(@RequestBody ItemVenda itemVenda, @PathVariable Integer id){
+       ItemVenda itemVendaAtualizado = itemVendaService.atualizar(itemVenda,id);
+
+        return ResponseEntity.ok(itemVendaAtualizado);
 
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ItemVenda> deletar (@PathVariable Integer id) {
+    public ResponseEntity<ItemVenda> deletar(@PathVariable Integer id) {
+        itemVendaService.deletar(id);
 
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<ItemVenda>> Lista (){
+    public ResponseEntity<List<ItemVenda>> Lista(){
+        List<ItemVenda> itemVendaListada = itemVendaService.listar();
 
-        ItemVenda itemv1 = new ItemVenda(1,200.00,1,produto1);
-            itemv1.setId(1);
-            itemv1.setValor(200.00);
-            itemv1.setQuantidade(1);
-            itemv1.setProduto(produto1);
-
-        ItemVenda itemv2 = new ItemVenda(2,15000.00,1,produto2);
-            itemv2.setId(2);
-            itemv2.setValor(15000.00);
-            itemv2.setQuantidade(1);
-            itemv2.setProduto(produto2);
-
-        ItemVenda itemv3 = new ItemVenda(3,300.00,1,produto3);
-            itemv3.setId(3);
-            itemv3.setValor(300.00);
-            itemv3.setQuantidade(1);
-            itemv3.setProduto(produto3);
-
-     return ResponseEntity.ok(List.of(itemv1, itemv2, itemv3));
+        return ResponseEntity.ok(itemVendaListada);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ItemVenda> obter (@PathVariable Integer id) {
-        System.out.println("Obterve id: " + id);
+    public ResponseEntity<ItemVenda> obter(@PathVariable Integer id) {
+        ItemVenda itemVendaObtida = itemVendaService.obter(id);
 
-        ItemVenda itemv1 = new ItemVenda(1,200.00,1,produto1);
-            itemv1.setId(1);
-            itemv1.setValor(200.00);
-            itemv1.setQuantidade(1);
-            itemv1.setProduto(produto1);
-
-        return ResponseEntity.ok(itemv1);
+        return ResponseEntity.ok(itemVendaObtida);
 
     }
 
