@@ -1,13 +1,13 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.*;
+import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class VendaService {
+public class VendaService implements MPPecasInterface<Venda> {
 
     Vendedor vendedor1 = new Vendedor(1, "Eliezer");
     Cliente cliente1 = new Cliente(1, "Monique", "777.777.777-77");
@@ -91,6 +91,7 @@ public class VendaService {
     public Venda obter (Integer id){
 
         List<ItemVenda> itemVendaLista = List.of(itemv1);
+        System.out.println("Obterve id: " +id);
 
         Venda venda1 = new Venda(1,vendedor1, cliente1, itemVendaLista);
         venda1.setId(1);

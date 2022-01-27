@@ -1,24 +1,25 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
+import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ClienteService {
-
+@Service
+public class ClienteService implements MPPecasInterface <Cliente> {
 
     public Cliente criar(Cliente cliente) {
         cliente.setId(1);
-
 
         return cliente;
     }
 
     public Cliente atualizar (Cliente cliente, Integer id){
+        cliente.getId(id);
 
         return cliente;
-
     }
 
     public void deletar (Integer id){
@@ -48,8 +49,9 @@ public class ClienteService {
     }
 
     public Cliente obter (Integer id) {
+        System.out.println("Obterve id: " +id);
 
-        Cliente cliente1 = new Cliente();
+        Cliente cliente1 = new Cliente(1,"Monique","777.777.777-77");
         cliente1.setId(1);
         cliente1.setNome("Monique");
         cliente1.setCpf("777.777.777-77");
