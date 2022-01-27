@@ -51,8 +51,8 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 
 5. Endpoints
  
-Requisições | Descrição
-:--------- | :------: | -------:
+Requisições | Descrição|
+:---------: | :----------------: 
  Valor | Valor
 
 
