@@ -59,29 +59,29 @@ Requisições | Descrição|
  POST `/cliente`| Adiciona um cliente ao sistema.
  POST `/vendedor` | Adiciona um vendedor ao sistema.
  
- PATCH/produto1 | Atualiza um cliente ao sistema.
- PATCH/itemvenda1 | Atualiza um item venda ao sistema.
- PATCH/venda1 | Atualiza uma venda ao sistema.
- PATCH/cliente1 | Atualiza um cliente ao sistema.
- PATCH/vendedor1 | Atualiza um vendedor ao sistema.
+ PATCH `/produto` | Atualiza um cliente ao sistema.
+ PATCH `/itemvenda` | Atualiza um item venda ao sistema.
+ PATCH `/venda` | Atualiza uma venda ao sistema.
+ PATCH `/cliente` | Atualiza um cliente ao sistema.
+ PATCH `/vendedor` | Atualiza um vendedor ao sistema.
  
- DELETE/produto1 | Deleta um cliente ao sistema.
- DELETE/itemvenda1 | Deleta um item venda ao sistema.
- DELETE/venda1 | Deleta uma venda ao sistema.
- DELETE/cliente1 | Deleta um cliente ao sistema.
- DELETE/vendedor1 | Deleta um vendedor ao sistema
+ DELETE `/produto` | Deleta um cliente ao sistema.
+ DELETE `/itemvenda` | Deleta um item venda ao sistema.
+ DELETE `/venda` | Deleta uma venda ao sistema.
+ DELETE `/cliente` | Deleta um cliente ao sistema.
+ DELETE `/vendedor` | Deleta um vendedor ao sistema
  
- GET/produto | Lista um cliente ao sistema.
- GET/itemvenda | Lista um item venda ao sistema.
- GET/venda | Lista uma venda ao sistema.
- GET/cliente | Lista um cliente ao sistema.
- GET/vendedor | Lista um vendedor ao sistema
+ GET `/produto` | Lista um cliente ao sistema.
+ GET `/itemvenda` | Lista um item venda ao sistema.
+ GET `/venda`| Lista uma venda ao sistema.
+ GET `/cliente` | Lista um cliente ao sistema.
+ GET `/vendedor` | Lista um vendedor ao sistema
  
- GET/produto1 | Busca por ID um cliente ao sistema.
- GET/itemvenda1 | Busca por ID um item venda ao sistema.
- GET/venda1 | Busca por ID uma venda ao sistema.
- GET/cliente1 | Busca por ID um cliente ao sistema.
- GET/vendedor1 | Busca por ID um vendedor ao sistema.
+ GET `/produto` | Busca por ID um cliente ao sistema.
+ GET `/itemvenda` | Busca por ID um item venda ao sistema.
+ GET `/venda` | Busca por ID uma venda ao sistema.
+ GET `/cliente` | Busca por ID um cliente ao sistema.
+ GET `/vendedor` | Busca por ID um vendedor ao sistema.
  
  
  
