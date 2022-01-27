@@ -1,15 +1,22 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Data
+@Entity
 public class ItemVenda {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Double valor;
     private Integer quantidade;
     private Produto produto;
 
-
+    @ManyToOne
     @Override
     public String toString() {
         return "ItemVenda{" +

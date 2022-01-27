@@ -1,12 +1,21 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Data
+@Entity
 public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String cpf;
 
+    @OneToOne
     @Override
     public String toString() {
         return "Cliente{" +

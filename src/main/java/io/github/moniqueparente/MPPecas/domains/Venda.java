@@ -1,18 +1,25 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Data
+@Entity
 public class Venda {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Vendedor vendedor;
     private Cliente cliente;
 
     List<ItemVenda> itemVendaLista = new ArrayList<>();
 
-
+    @OneToOne
     @Override
     public String toString() {
         return "Venda{" +
@@ -34,8 +41,8 @@ public class Venda {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer setId(Integer id) {
+        return this.id = id;
     }
 
     public Vendedor getVendedor() {
