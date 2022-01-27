@@ -10,6 +10,7 @@ ________________________________________________________________________________
 2.	Resumo da aplicação.
 3.	Ferramentas.
 4.	Frameworks.
+5. Endpoints
 ______________________________________________________________________________________________________________________________________________________________________________
 1.	Pensamentos Iniciais de Estruturação.
 
@@ -47,3 +48,11 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 4.	Frameworks
 - JPA.
 - Sprint Boot.
+
+5. Endpoints
+ 
+Requisições | Descrição
+:--------- | :------: | -------:
+ Valor | Valor
+
+
