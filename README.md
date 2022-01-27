@@ -81,7 +81,7 @@ Requisições | Descrição|
  
  Exemplo de uma requisição:
  POST `/venda`  
- 
+ ```json
  {
     "id": 1,
     "vendedor" : {
@@ -106,7 +106,7 @@ Requisições | Descrição|
        }
     ]
 }
- 
+``` 
  
  
  
