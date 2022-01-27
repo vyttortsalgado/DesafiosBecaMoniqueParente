@@ -72,7 +72,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 | GET `/venda`        | Lista uma venda ao sistema.              |
 | GET `/cliente`      | Lista um cliente ao sistema.             |
 | GET `/vendedor`     | Lista um vendedor ao sistema             |
-||GET `/produto`      | Busca por ID um cliente ao sistema.      |
+| GET `/produto`      | Busca por ID um cliente ao sistema.      |
 | GET `/itemvenda`    | Busca por ID um item venda ao sistema.   |
 | GET `/venda`        | Busca por ID uma venda ao sistema.       |
 | GET `/cliente`      | Busca por ID um cliente ao sistema.      |
