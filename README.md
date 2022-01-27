@@ -52,7 +52,8 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 5. Endpoints
  
 Requisições | Descrição|
-:---------: | :----------------: 
- Valor | Valor
+:-------------: | :----------------: 
+ POST/produto | Cria um produto no sistema
+ Post/itemvenda | Cria um item de venda no sistema
 
 
