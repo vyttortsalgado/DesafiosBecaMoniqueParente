@@ -52,7 +52,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 5. Endpoints
  
 |Requisições          | Descrição                                |
-|-|-------------------|------------------------------------------|
+|---------------------|------------------------------------------|
 | POST `/itemvenda`   | Adiciona um item de venda ao sistema.    |
 | POST `/venda`       | Adiciona uma venda ao sistema.           |
 | POST `/cliente`     | Adiciona um cliente ao sistema.          |
