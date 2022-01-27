@@ -1,15 +1,41 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
+
+import io.github.moniqueparente.MPPecas.domains.Venda;
+import io.github.moniqueparente.MPPecas.services.VendaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+
 import io.github.moniqueparente.MPPecas.domains.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/venda")
 public class VendaController {
+
+
+    @Autowired
+    private VendaService vendaService;
+
+    @PostMapping
+    public ResponseEntity<Venda> criar(@RequestBody Venda venda){
+        Venda vendaCriada = vendaService.criar(venda);
+
+        return ResponseEntity.created(null).body(vendaCriada);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Venda> atualizar(@RequestBody Venda venda, @PathVariable Integer id){
+        Venda vendaAtualizada = vendaService.atualizar(venda,id);
+
+        return ResponseEntity.ok(vendaAtualizada);
 
     Vendedor vendedor1 = new Vendedor(1,"Eliezer");
     Cliente cliente1 = new Cliente(1,"Monique","777.777.777-77");
@@ -44,11 +70,23 @@ public class VendaController {
     }
 
     @DeleteMapping("/{id}")
+
+    public ResponseEntity<Venda> deletar(@PathVariable Integer id) {
+        vendaService.deletar(id);
+
     public ResponseEntity<Venda> deletar (@PathVariable Integer id) {
+
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping
+
+    public ResponseEntity<List<Venda>> listar(){
+
+        List<Venda> vendaListada = vendaService.listar();
+
+        return ResponseEntity.ok(vendaListada);
+
     public ResponseEntity<List<Venda>> Lista (){
 
         List<ItemVenda> itemVendaLista = Arrays.asList(itemv1, itemv2, itemv3);
@@ -94,6 +132,15 @@ public class VendaController {
     }
 
     @GetMapping("/{id}")
+
+    public ResponseEntity<Venda> obter(@PathVariable Integer id){
+        Venda vendaObtida = vendaService.obter(id);
+
+        return  ResponseEntity.ok(vendaObtida);
+
+    }
+    }
+
     public ResponseEntity<Venda> obter (@PathVariable Integer id){
         System.out.println("Obterve id: " +id);
 
@@ -108,5 +155,6 @@ public class VendaController {
 
     }
     }
+
 
 
