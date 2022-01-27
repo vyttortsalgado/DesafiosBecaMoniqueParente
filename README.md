@@ -79,6 +79,35 @@ Requisições | Descrição|
  GET `/cliente` | Busca por ID um cliente ao sistema.
  GET `/vendedor` | Busca por ID um vendedor ao sistema.
  
+ Exemplo de uma requisição:
+ POST `/venda`  
+ 
+ {
+    "id": 1,
+    "vendedor" : {
+        "id" : 1,
+        "nome" : "Eliezer"
+    },
+    "cliente" : {
+        "id" : 1,
+        "nome" : "Monique",
+        "cpf" : "777.777.777-77"
+    },
+    "itemVendaList": [
+        {
+            "id" : 1,
+            "valor" : 200.00,
+            "quantidade" : 1,
+            "produto" : {
+                "id" : 1,
+                "nome" : "Teclado",
+                "marca" : "Redragon"
+        }
+       }
+    ]
+}
+ 
+ 
  
  
 
