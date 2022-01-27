@@ -38,7 +38,7 @@ public class VendedorController {
 
     @GetMapping()
     public ResponseEntity<List<Vendedor>> listar(){
-        List<Vendedor> vendedorListado = vendedorService.Listar();
+        List<Vendedor> vendedorListado = vendedorService.listar();
 
 
         return ResponseEntity.ok(vendedorListado);
@@ -53,8 +53,3 @@ public class VendedorController {
     }
 
     }
-
-
-
-
-

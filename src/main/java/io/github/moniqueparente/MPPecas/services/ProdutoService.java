@@ -1,13 +1,14 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
+import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ProdutoService {
+public class ProdutoService implements MPPecasInterface<Produto> {
 
         public Produto criar (Produto produto){
             produto.setId(1);
@@ -50,7 +51,7 @@ public class ProdutoService {
         public Produto obter (Integer id){
             System.out.println("Obterve id: " +id);
 
-            Produto produto1 = new Produto();
+            Produto produto1 = new Produto(1,"Teclado","Redragon");
             produto1.setId(1);
             produto1.setNome("Teclado");
             produto1.setMarca("Redragon");
