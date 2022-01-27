@@ -53,7 +53,19 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
  
 Requisições | Descrição|
 :-------------: | :----------------: 
- POST/produto | Cria um produto no sistema
- Post/itemvenda | Cria um item de venda no sistema
+ POST/produto | Adiciona um produto ao sistema.
+ POST/itemvenda | Adiciona um item de venda ao sistema.
+ POST/venda | Adiciona uma venda ao sistema.
+ POST/cliente | Adiciona um cliente ao sistema.
+ POST/vendedor | Adiciona um vendedor ao sistema.
+ POST/cliente | Adiciona um cliente ao sistema.
+ PATCH/produto | Atualiza um cliente ao sistema.
+ PATCH/itemvenda | Atualiza um item venda ao sistema.
+ PATCH/venda | Atualiza uma venda ao sistema.
+ PATCH/cliente | Atualiza um cliente ao sistema.
+ PATCH/itemvenda | Atualiza um vendedor ao sistema
+ 
+ 
+ 
 
 
