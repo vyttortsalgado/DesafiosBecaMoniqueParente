@@ -25,8 +25,13 @@ public class Cliente {
         this.cpf = cpf;
     }
 
+
     public Integer getId(Integer id) {
         return this.id;
+      
+    public Integer getId() {
+        return id;
+
     }
 
     public void setId(Integer id) {
