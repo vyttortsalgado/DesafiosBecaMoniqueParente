@@ -58,25 +58,21 @@ Requisições | Descrição|
  POST `/venda` | Adiciona uma venda ao sistema.
  POST `/cliente`| Adiciona um cliente ao sistema.
  POST `/vendedor` | Adiciona um vendedor ao sistema.
- 
  PATCH `/produto` | Atualiza um cliente ao sistema.
  PATCH `/itemvenda` | Atualiza um item venda ao sistema.
  PATCH `/venda` | Atualiza uma venda ao sistema.
  PATCH `/cliente` | Atualiza um cliente ao sistema.
  PATCH `/vendedor` | Atualiza um vendedor ao sistema.
- 
  DELETE `/produto` | Deleta um cliente ao sistema.
  DELETE `/itemvenda` | Deleta um item venda ao sistema.
  DELETE `/venda` | Deleta uma venda ao sistema.
  DELETE `/cliente` | Deleta um cliente ao sistema.
  DELETE `/vendedor` | Deleta um vendedor ao sistema
- 
  GET `/produto` | Lista um cliente ao sistema.
  GET `/itemvenda` | Lista um item venda ao sistema.
  GET `/venda`| Lista uma venda ao sistema.
  GET `/cliente` | Lista um cliente ao sistema.
  GET `/vendedor` | Lista um vendedor ao sistema
- 
  GET `/produto` | Busca por ID um cliente ao sistema.
  GET `/itemvenda` | Busca por ID um item venda ao sistema.
  GET `/venda` | Busca por ID uma venda ao sistema.
