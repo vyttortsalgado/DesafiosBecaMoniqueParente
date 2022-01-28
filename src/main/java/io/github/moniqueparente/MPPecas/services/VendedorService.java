@@ -1,14 +1,13 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
-import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class VendedorService implements MPPecasInterface<Vendedor> {
+public class VendedorService{
 
 
     public Vendedor criar (Vendedor vendedor){

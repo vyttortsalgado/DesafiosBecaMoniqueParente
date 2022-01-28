@@ -14,21 +14,15 @@ public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Vendedor vendedor;
-    private Cliente cliente;
-
-    List<ItemVenda> itemVendaLista = new ArrayList<>();
 
     @OneToOne
-    @Override
-    public String toString() {
-        return "Venda{" +
-                "id=" + id +
-                ", vendedor=" + vendedor +
-                ", cliente=" + cliente +
-                ", itemVendaList=" + itemVendaLista +
-                '}';
-    }
+    private Vendedor vendedor;
+
+    @OneToOne
+    private Cliente cliente;
+
+    @OneToMany
+    List<ItemVenda> itemVendaLista = new ArrayList<>();
 
     public Venda(Integer id, Vendedor vendedor, Cliente cliente, List<ItemVenda> itemVendaLista) {
         this.id = id;
@@ -81,5 +75,15 @@ public class Venda {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "id=" + id +
+                ", vendedor=" + vendedor +
+                ", cliente=" + cliente +
+                ", itemVendaList=" + itemVendaLista +
+                '}';
     }
 }

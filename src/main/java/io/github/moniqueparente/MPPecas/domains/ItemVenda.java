@@ -14,18 +14,12 @@ public class ItemVenda {
     private Integer id;
     private Double valor;
     private Integer quantidade;
+
+    @OneToOne
     private Produto produto;
 
     @ManyToOne
-    @Override
-    public String toString() {
-        return "ItemVenda{" +
-                "id=" + id +
-                ", valor=" + valor +
-                ", quantidade=" + quantidade +
-                ", produto=" + produto +
-                '}';
-    }
+    private Venda venda;
 
     public ItemVenda(Integer id, Double valor, Integer quantidade, Produto produto) {
         this.id = id;
@@ -77,5 +71,15 @@ public class ItemVenda {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ItemVenda{" +
+                "id=" + id +
+                ", valor=" + valor +
+                ", quantidade=" + quantidade +
+                ", produto=" + produto +
+                '}';
     }
 }

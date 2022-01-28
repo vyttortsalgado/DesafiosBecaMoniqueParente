@@ -2,23 +2,27 @@ package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
 import io.github.moniqueparente.MPPecas.domains.Produto;
-import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
+import io.github.moniqueparente.MPPecas.repositorio.ItemVendaRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ItemVendaService implements MPPecasInterface<ItemVenda> {
+public class ItemVendaService{
 
     Produto produto1 = new Produto(1,"Teclado","Redragon");
     Produto produto2 = new Produto(2,"Notebook", "Alienware");
     Produto produto3 = new Produto(3,"Mouse", "Dell");
 
-    public ItemVenda criar (ItemVenda itemVenda){
-        itemVenda.setId(1);
+    @Autowired
+    private ItemVendaRepositorio itemVendaRepositorio;
 
-        return itemVenda;
+    public ItemVenda criar (ItemVenda itemVenda){
+        ItemVenda itemVendaSalvo = itemVendaRepositorio.save(itemVenda);
+
+        return itemVendaSalvo;
     }
 
     public ItemVenda atualizar ( ItemVenda itemVenda, Integer id){

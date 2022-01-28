@@ -1,14 +1,13 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
-import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ClienteService implements MPPecasInterface <Cliente> {
+public class ClienteService{
 
     public Cliente criar(Cliente cliente) {
         cliente.setId(1);

@@ -16,14 +16,7 @@ public class Cliente {
     private String cpf;
 
     @OneToOne
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}';
-    }
+    private Venda venda;
 
     public Cliente() {
     }
@@ -69,5 +62,14 @@ public class Cliente {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
     }
 }

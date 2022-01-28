@@ -15,15 +15,6 @@ public class Produto {
     private String nome;
     private String marca;
 
-    @OneToOne
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", marca='" + marca + '\'' +
-                '}';
-    }
 
     public Produto() {
     }
@@ -69,5 +60,14 @@ public class Produto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", marca='" + marca + '\'' +
+                '}';
     }
 }

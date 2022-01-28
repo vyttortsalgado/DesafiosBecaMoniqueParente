@@ -1,19 +1,23 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
-import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
+import io.github.moniqueparente.MPPecas.repositorio.ProdutoRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ProdutoService implements MPPecasInterface<Produto> {
+public class ProdutoService{
+
+    @Autowired
+    private ProdutoRepositorio produtoRepositorio;
 
         public Produto criar (Produto produto){
-            produto.setId(1);
+            Produto produtoSalvo = produtoRepositorio.save(produto);
 
-            return produto;
+            return produtoSalvo;
         }
 
         public Produto atualizar (Produto produto, Integer id){
