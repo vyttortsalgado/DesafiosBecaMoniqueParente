@@ -12,14 +12,15 @@ public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Double valor;
     private Integer quantidade;
 
     @OneToOne
     private Produto produto;
 
-    @ManyToOne
-    private Venda venda;
+    public ItemVenda() {
+    }
 
     public ItemVenda(Integer id, Double valor, Integer quantidade, Produto produto) {
         this.id = id;

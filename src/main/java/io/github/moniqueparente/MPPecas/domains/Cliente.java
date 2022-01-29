@@ -15,9 +15,6 @@ public class Cliente {
     private String nome;
     private String cpf;
 
-    @OneToOne
-    private Venda venda;
-
     public Cliente() {
     }
 
@@ -27,7 +24,7 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Integer getId(Integer id) {
+    public Integer getId(Integer id){
         return this.id;
     }
 

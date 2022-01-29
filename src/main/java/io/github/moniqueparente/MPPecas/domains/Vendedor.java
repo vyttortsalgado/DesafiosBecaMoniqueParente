@@ -14,9 +14,6 @@ public class Vendedor {
     private Integer id;
     private String nome;
 
-    @OneToOne
-    private Venda venda;
-
     public Vendedor() {
     }
 

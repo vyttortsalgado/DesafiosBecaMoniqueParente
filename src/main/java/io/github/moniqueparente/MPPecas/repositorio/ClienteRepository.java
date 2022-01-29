@@ -1,9 +1,10 @@
 package io.github.moniqueparente.MPPecas.repositorio;
 
-import io.github.moniqueparente.MPPecas.domains.Produto;
+
+import io.github.moniqueparente.MPPecas.domains.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProdutoRepositorio extends JpaRepository<Produto, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 }

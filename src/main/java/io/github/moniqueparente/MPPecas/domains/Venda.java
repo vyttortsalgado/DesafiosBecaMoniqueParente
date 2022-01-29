@@ -3,7 +3,6 @@ package io.github.moniqueparente.MPPecas.domains;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,13 +15,18 @@ public class Venda {
     private Integer id;
 
     @OneToOne
+    @JoinColumn(name = "vendedor_id", nullable = false)
     private Vendedor vendedor;
 
     @OneToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @OneToMany
-    List<ItemVenda> itemVendaLista = new ArrayList<>();
+    private List<ItemVenda> itemVendaLista;
+
+    public Venda() {
+    }
 
     public Venda(Integer id, Vendedor vendedor, Cliente cliente, List<ItemVenda> itemVendaLista) {
         this.id = id;
@@ -31,12 +35,21 @@ public class Venda {
         this.itemVendaLista = itemVendaLista;
     }
 
+    double valorTotal(){
+
+        double precototal = 0;
+        for(ItemVenda itemVenda : this.itemVendaLista){
+            precototal += itemVenda.getValor();
+
+        } return  precototal;
+    }
+
     public Integer getId() {
         return id;
     }
 
-    public Integer setId(Integer id) {
-        return this.id = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Vendedor getVendedor() {
@@ -55,12 +68,11 @@ public class Venda {
         this.cliente = cliente;
     }
 
-    public List<ItemVenda> getItemVendaList() {
+    public List<ItemVenda> getItemVendaLista() {
         return itemVendaLista;
     }
 
-    public void setItemVendaList(List<ItemVenda> itemVendaLista) {
-
+    public void setItemVendaLista(List<ItemVenda> itemVendaLista) {
         this.itemVendaLista = itemVendaLista;
     }
 
@@ -83,7 +95,7 @@ public class Venda {
                 "id=" + id +
                 ", vendedor=" + vendedor +
                 ", cliente=" + cliente +
-                ", itemVendaList=" + itemVendaLista +
+                ", itemVendaLista=" + itemVendaLista +
                 '}';
     }
 }
