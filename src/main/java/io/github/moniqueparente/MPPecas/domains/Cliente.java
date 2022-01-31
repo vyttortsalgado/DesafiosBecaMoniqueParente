@@ -1,20 +1,19 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Data
+@Entity
 public class Cliente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String cpf;
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}';
-    }
 
     public Cliente() {
     }
@@ -25,15 +24,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-
     public Integer getId(Integer id) {
+
         return this.id;
-      
-    public Integer getId() {
-        return id;
-
     }
-
+ 
     public void setId(Integer id) {
         this.id = id;
     }
@@ -65,5 +60,14 @@ public class Cliente {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                '}';
     }
 }

@@ -1,26 +1,31 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import java.util.ArrayList;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+@Data
+@Entity
 public class Venda {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "vendedor_id", nullable = false)
     private Vendedor vendedor;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    List<ItemVenda> itemVendaLista = new ArrayList<>();
+    @OneToMany
+    private List<ItemVenda> itemVendaLista;
 
-
-    @Override
-    public String toString() {
-        return "Venda{" +
-                "id=" + id +
-                ", vendedor=" + vendedor +
-                ", cliente=" + cliente +
-                ", itemVendaList=" + itemVendaLista +
-                '}';
+    public Venda() {
     }
 
     public Venda(Integer id, Vendedor vendedor, Cliente cliente, List<ItemVenda> itemVendaLista) {
@@ -28,6 +33,15 @@ public class Venda {
         this.vendedor = vendedor;
         this.cliente = cliente;
         this.itemVendaLista = itemVendaLista;
+    }
+
+    double valorTotal(){
+
+        double precototal = 0;
+        for(ItemVenda itemVenda : this.itemVendaLista){
+            precototal += itemVenda.getValor();
+
+        } return  precototal;
     }
 
     public Integer getId() {
@@ -54,12 +68,11 @@ public class Venda {
         this.cliente = cliente;
     }
 
-    public List<ItemVenda> getItemVendaList() {
+    public List<ItemVenda> getItemVendaLista() {
         return itemVendaLista;
     }
 
-    public void setItemVendaList(List<ItemVenda> itemVendaLista) {
-
+    public void setItemVendaLista(List<ItemVenda> itemVendaLista) {
         this.itemVendaLista = itemVendaLista;
     }
 
@@ -74,5 +87,15 @@ public class Venda {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" +
+                "id=" + id +
+                ", vendedor=" + vendedor +
+                ", cliente=" + cliente +
+                ", itemVendaLista=" + itemVendaLista +
+                '}';
     }
 }

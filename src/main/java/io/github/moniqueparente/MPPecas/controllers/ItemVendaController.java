@@ -28,7 +28,8 @@ public class ItemVendaController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<ItemVenda> atualizar(@RequestBody ItemVenda itemVenda, @PathVariable Integer id){
-       ItemVenda itemVendaAtualizado = itemVendaService.atualizar(itemVenda,id);
+
+       ItemVenda itemVendaAtualizado = itemVendaService.atualizar(itemVenda, id);
 
         return ResponseEntity.ok(itemVendaAtualizado);
 

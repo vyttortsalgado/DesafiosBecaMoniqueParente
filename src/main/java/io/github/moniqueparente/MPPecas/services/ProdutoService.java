@@ -1,63 +1,48 @@
 package io.github.moniqueparente.MPPecas.services;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
-import io.github.moniqueparente.MPPecas.repositorio.MPPecasInterface;
+import io.github.moniqueparente.MPPecas.repositorio.ProdutoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ProdutoService implements MPPecasInterface<Produto> {
+public class ProdutoService{
+
+    @Autowired
+    private ProdutoRepository produtoRepositorio;
 
         public Produto criar (Produto produto){
-            produto.setId(1);
+            Produto produtoSalvo = produtoRepositorio.save(produto);
 
-            return produto;
+            return produtoSalvo;
         }
 
         public Produto atualizar (Produto produto, Integer id){
-            produto.setId(id);
+            Produto produtoObtido = this.obter(id);
+            produtoObtido.setNome(produto.getNome());
+            produtoObtido.setMarca(produto.getMarca());
 
-            return produto;
+            produtoRepositorio.save(produtoObtido);
+
+            return  produtoObtido;
         }
 
         public void deletar (Integer id) {
-
+            produtoRepositorio.deleteById(id);
         }
 
         public List<Produto> listar() {
-
-            Produto produto1 = new Produto();
-            produto1.setId(1);
-            produto1.setNome("Teclado");
-            produto1.setMarca("Redragon");
-
-            Produto produto2 = new Produto();
-            produto2.setId(2);
-            produto2.setNome("Notebook");
-            produto2.setMarca("Alienware");
-
-            Produto produto3 = new Produto();
-            produto3.setId(3);
-            produto3.setNome("Mouse");
-            produto3.setMarca("Dell");
-
-            List<Produto> listaProduto = Arrays.asList(produto1,produto2,produto3);
+            List<Produto> listaProduto = produtoRepositorio.findAll();
 
             return listaProduto;
         }
 
         public Produto obter (Integer id){
-            System.out.println("Obterve id: " +id);
+            Produto produto = produtoRepositorio.findById(id).get();
 
-            Produto produto1 = new Produto(1,"Teclado","Redragon");
-            produto1.setId(1);
-            produto1.setNome("Teclado");
-            produto1.setMarca("Redragon");
-
-            return produto1;
-
+            return produto;
         }
 
     }

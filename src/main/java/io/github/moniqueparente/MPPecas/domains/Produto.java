@@ -1,21 +1,19 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Data
+@Entity
 public class Produto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String marca;
-
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", marca='" + marca + '\'' +
-                '}';
-    }
 
     public Produto() {
     }
@@ -61,5 +59,14 @@ public class Produto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", marca='" + marca + '\'' +
+                '}';
     }
 }
