@@ -1,23 +1,33 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDto;
+import lombok.Builder;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+@Builder
+@Entity
 public class ItemVenda {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Double valor;
     private Integer quantidade;
+
+    @OneToOne
     private Produto produto;
 
+    public ItemVenda() {
+    }
 
-    @Override
-    public String toString() {
-        return "ItemVenda{" +
-                "id=" + id +
-                ", valor=" + valor +
-                ", quantidade=" + quantidade +
-                ", produto=" + produto +
-                '}';
+    public ItemVenda(ItemVendaDto itemVendaDto) {
+        this.valor = itemVendaDto.getValor();
+        this.quantidade = itemVendaDto.getQuantidade();
+        this.produto = itemVendaDto.getProduto();
+
     }
 
     public ItemVenda(Integer id, Double valor, Integer quantidade, Produto produto) {
@@ -70,5 +80,15 @@ public class ItemVenda {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ItemVenda{" +
+                "id=" + id +
+                ", valor=" + valor +
+                ", quantidade=" + quantidade +
+                ", produto=" + produto +
+                '}';
     }
 }

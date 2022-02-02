@@ -1,21 +1,21 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Produto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private String marca;
-
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", marca='" + marca + '\'' +
-                '}';
-    }
 
     public Produto() {
     }
@@ -24,6 +24,11 @@ public class Produto {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
+    }
+
+    public Produto(ProdutoDto produtoDto) {
+        this.nome = produtoDto.getNome();
+        this.marca = produtoDto.getMarca();
     }
 
     public Integer getId() {
@@ -61,5 +66,14 @@ public class Produto {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", marca='" + marca + '\'' +
+                '}';
     }
 }
