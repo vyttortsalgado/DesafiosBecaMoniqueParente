@@ -1,11 +1,11 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import lombok.Data;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.util.Objects;
 
-@Data
+@Builder
 @Entity
 public class ItemVenda {
 

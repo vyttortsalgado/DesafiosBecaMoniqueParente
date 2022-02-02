@@ -1,7 +1,7 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
-import io.github.moniqueparente.MPPecas.services.VendedorService;
+import io.github.moniqueparente.MPPecas.services.imp.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,8 @@
-package io.github.moniqueparente.MPPecas.services;
+package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
 import io.github.moniqueparente.MPPecas.repositorio.ItemVendaRepository;
+import io.github.moniqueparente.MPPecas.services.ItemVendaServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ItemVendaService{
+public class ItemVendaService implements ItemVendaServiceInterface {
 
     @Autowired
     private ItemVendaRepository itemVendaRepositorio;

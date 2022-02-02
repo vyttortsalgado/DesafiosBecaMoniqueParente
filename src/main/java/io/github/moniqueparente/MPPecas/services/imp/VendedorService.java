@@ -1,14 +1,15 @@
-package io.github.moniqueparente.MPPecas.services;
+package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
 import io.github.moniqueparente.MPPecas.repositorio.VendedorRepository;
+import io.github.moniqueparente.MPPecas.services.VendedorServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class VendedorService {
+public class VendedorService implements VendedorServiceInterface {
 
     @Autowired
     private VendedorRepository vendedorRepositorio;

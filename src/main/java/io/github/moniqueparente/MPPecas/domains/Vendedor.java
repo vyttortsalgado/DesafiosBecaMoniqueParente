@@ -1,11 +1,14 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import lombok.Data;
+import lombok.Builder;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
-@Data
+@Builder
 @Entity
 public class Vendedor {
 

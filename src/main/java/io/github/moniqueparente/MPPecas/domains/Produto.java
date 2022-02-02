@@ -1,11 +1,13 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import lombok.Data;
+import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
-@Data
 @Entity
 public class Produto {
 
@@ -22,6 +24,11 @@ public class Produto {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
+    }
+
+    public Produto(ProdutoDto produtoDto) {
+        this.nome = produtoDto.getNome();
+        this.marca = produtoDto.getMarca();
     }
 
     public Integer getId() {
