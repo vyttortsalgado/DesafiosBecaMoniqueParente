@@ -2,7 +2,7 @@ package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
 import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
-import io.github.moniqueparente.MPPecas.repositorio.ProdutoRepository;
+import io.github.moniqueparente.MPPecas.repository.ProdutoRepository;
 import io.github.moniqueparente.MPPecas.services.ProdutoServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,10 +20,9 @@ public class ProdutoService implements ProdutoServiceInterface {
     private Object Produto;
     private Object List;
 
-    public ProdutoDto criar (ProdutoDto produtoDto){
+    public ProdutoDto criar (Produto produto){
 
-        Produto produto = new Produto(produtoDto);
-        produtoRepositorio.save(produto);
+        Produto produtosalvo = produtoRepositorio.save(produto);
 
         return new ProdutoDto(produto);
     }
@@ -31,7 +30,10 @@ public class ProdutoService implements ProdutoServiceInterface {
     public Produto atualizar (ProdutoDto produtoDto, Integer id){
 
         return produtoRepositorio.findById(id)
-                .map(produto -> produtoRepositorio.save(produto))
+                .map(itemVenda -> {
+                    itemVenda.setNome(produtoDto.getNome());
+                    return produtoRepositorio.save(itemVenda);
+                })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
@@ -53,7 +55,6 @@ public class ProdutoService implements ProdutoServiceInterface {
     public ProdutoDto obter (Integer id){
 
         return new ProdutoDto(produtoRepositorio.findById(id).get());
-
     }
 
 }

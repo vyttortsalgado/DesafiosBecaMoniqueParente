@@ -2,7 +2,6 @@ package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
 import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
-import io.github.moniqueparente.MPPecas.dto.response.ClienteDto;
 import io.github.moniqueparente.MPPecas.services.imp.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,38 +17,36 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @PostMapping
-    public ResponseEntity<Object> criar(@RequestBody ClienteDto clienteDtoRequest){
-        ClienteDto cliente = clienteService.criar(clienteDtoRequest.build());
+    public ResponseEntity<ClienteDto> criar(@RequestBody Cliente cliente){
 
-        return ResponseEntity.created(null).body(cliente);
+        return ResponseEntity.created(null).body(clienteService.criar(cliente));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Cliente> atualizar(@RequestBody Cliente cliente, @PathVariable Integer id){
-        Cliente clienteAtualizado = clienteService.atualizar(cliente,id);
-
-        return ResponseEntity.ok(clienteAtualizado);
+    public ResponseEntity<ClienteDto> atualizar(@RequestBody ClienteDto clienteDto,
+                                             @PathVariable Integer id){
+        return ResponseEntity.created(null)
+                .body(new ClienteDto(clienteService.atualizar(clienteDto,id)));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Cliente> deletar(@PathVariable Integer id) {
-        clienteService.deletar(id);
+    public ResponseEntity<ClienteDto> deletar(@PathVariable Integer id) {
 
+        clienteService.deletar(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping()
     public ResponseEntity<List<ClienteDto>> listar(){
-        List<Cliente> clienteListado = clienteService.listar();
 
-        return new ClienteDto(<clienteService> clienteListado);
+        List<ClienteDto> clienteLista = clienteService.listar();
+        return ResponseEntity.ok(clienteLista);
     }
 
     @GetMapping("/{id}")
-    public ClienteDto obter(@PathVariable Integer id) {
-        Cliente clienteObtido = clienteService.obter(id);
+    public ResponseEntity<ClienteDto> obter(@PathVariable Integer id) {
 
-        return new ClienteDto(clienteObtido);
-
+        ClienteDto clienteObtido = clienteService.obter(id);
+        return ResponseEntity.ok(clienteObtido);
     }
 }

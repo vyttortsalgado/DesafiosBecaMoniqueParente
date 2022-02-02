@@ -1,5 +1,6 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDto;
 import lombok.Builder;
 
 import javax.persistence.*;
@@ -20,6 +21,13 @@ public class ItemVenda {
     private Produto produto;
 
     public ItemVenda() {
+    }
+
+    public ItemVenda(ItemVendaDto itemVendaDto) {
+        this.valor = itemVendaDto.getValor();
+        this.quantidade = itemVendaDto.getQuantidade();
+        this.produto = itemVendaDto.getProduto();
+
     }
 
     public ItemVenda(Integer id, Double valor, Integer quantidade, Produto produto) {

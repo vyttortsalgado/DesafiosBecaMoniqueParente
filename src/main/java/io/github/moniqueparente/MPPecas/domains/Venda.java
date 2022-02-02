@@ -1,5 +1,6 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.*;
 import lombok.Builder;
 
 import javax.persistence.*;
@@ -42,6 +43,14 @@ public class Venda {
             precototal += itemVenda.getValor();
 
         } return  precototal;
+    }
+
+    public Venda (VendedorDto vendedorDto, ClienteDto clienteDto,
+                  VendaDto itemVendaLista) {
+        vendedor.setNome(vendedorDto.getNome());
+        cliente.setNome(clienteDto.getNome());
+        cliente.setCpf(clienteDto.getCpf());
+        itemVendaLista.setItemVendaLista(itemVendaLista.getItemVendaLista());
     }
 
     public Integer getId() {

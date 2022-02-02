@@ -2,11 +2,14 @@ package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
 import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
-import io.github.moniqueparente.MPPecas.repositorio.ClienteRepository;
+import io.github.moniqueparente.MPPecas.repository.ClienteRepository;
 import io.github.moniqueparente.MPPecas.services.ClienteServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,38 +19,39 @@ public class ClienteService implements ClienteServiceInterface {
     private ClienteRepository clienteRepositorio;
 
     public ClienteDto criar(Cliente cliente) {
-        Cliente clienteSalvo = clienteRepositorio.save(cliente);
 
-        return new ClienteDto(clienteSalvo);
+        Cliente clientesalvo = clienteRepositorio.save(cliente);
+
+        return new ClienteDto(cliente);
     }
 
-    public ClienteDto atualizar (Cliente cliente){
-        Cliente clienteObtido = new Cliente();
-        clienteObtido.setNome(cliente.getNome());
-        clienteObtido.setCpf(cliente.getCpf());
+    public Cliente atualizar (ClienteDto clienteDto, Integer id){
 
-        clienteRepositorio.save(clienteObtido);
-
-        return new ClienteDto(clienteObtido);
+        return clienteRepositorio.findById(id)
+                .map(cliente -> {
+                    cliente.setNome(clienteDto.getNome());
+                    cliente.setCpf(clienteDto.getCpf());
+                    return clienteRepositorio.save(cliente);
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public void deletar (Integer id){
         clienteRepositorio.deleteById(id);
     }
 
-    public List<Cliente> listar() {
+    public List<ClienteDto> listar() {
 
-        List<Cliente> listaCliente = clienteRepositorio.findAll();
+        List<ClienteDto> listaClienteDto = new ArrayList<>();
 
-        return listaCliente;
+        clienteRepositorio.findAll().stream()
+                .forEach(cliente -> listaClienteDto.add(new ClienteDto(cliente)));
+
+        return listaClienteDto;
     }
 
-    public Cliente obter (Integer id) {
-        Cliente cliente = clienteRepositorio.findById(id).get();
+    public ClienteDto obter (Integer id) {
 
-        return cliente;
-
+        return new ClienteDto(clienteRepositorio.findById(id).get());
     }
-
-
 }

@@ -1,4 +1,4 @@
-package io.github.moniqueparente.MPPecas.repositorio;
+package io.github.moniqueparente.MPPecas.repository;
 
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,13 +1,16 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Venda;
-import io.github.moniqueparente.MPPecas.repositorio.VendaRepository;
+import io.github.moniqueparente.MPPecas.dto.request.VendaDto;
+import io.github.moniqueparente.MPPecas.repository.VendaRepository;
 import io.github.moniqueparente.MPPecas.services.VendaServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VendaService implements VendaServiceInterface {
@@ -15,43 +18,43 @@ public class VendaService implements VendaServiceInterface {
     @Autowired
     private VendaRepository vendaRepositorio;
 
-    public Venda criar(Venda venda) {
-        Venda vendaSalvo = vendaRepositorio.save(venda);
+    public VendaDto criar(Venda venda) {
 
-        return vendaSalvo;
+        Venda vendasalva = vendaRepositorio.save(venda);
+
+        return new VendaDto(venda);
     }
 
-    public Venda atualizar(Venda venda, Integer id) {
+    public Venda atualizar(VendaDto vendaDto, Integer id) {
 
-        Venda vendaObtida = this.obter(id);
-        vendaRepositorio.save(vendaObtida);
-        vendaObtida.setCliente(vendaObtida.getCliente());
-        vendaObtida.setVendedor(vendaObtida.getVendedor());
-        vendaObtida.setItemVendaLista(vendaObtida.getItemVendaLista());
-
-        vendaRepositorio.save(vendaObtida);
-
-        return venda;
-
+        return vendaRepositorio.findById(id)
+                .map(venda -> {
+                    venda.setVendedor(venda.getVendedor());
+                    venda.setCliente(venda.getCliente());
+                    venda.setItemVendaLista(vendaDto.getItemVendaLista());
+                    return vendaRepositorio.save(venda);
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public void deletar (Integer id) {
         vendaRepositorio.deleteById(id);
     }
 
-    public List<Venda> listar() {
+    public List<VendaDto> listar() {
 
-        List<Venda> listaVenda = vendaRepositorio.findAll();
+        List<VendaDto> listaVendaDto = new ArrayList<>();
 
-        return listaVenda;
+        vendaRepositorio.findAll().stream()
+                .forEach(venda -> listaVendaDto.add(new VendaDto(venda)));
+
+        return listaVendaDto;
 
     }
 
-    public Venda obter (Integer id){
-        Optional<Venda> obj = vendaRepositorio.findById(id);
+    public VendaDto obter (Integer id){
 
-        return obj.get();
-
+        return new VendaDto(vendaRepositorio.findById(id).get());
     }
 
 }

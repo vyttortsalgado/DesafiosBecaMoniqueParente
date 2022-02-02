@@ -1,37 +1,40 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
-import io.github.moniqueparente.MPPecas.repositorio.ItemVendaRepository;
+import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDto;
+import io.github.moniqueparente.MPPecas.repository.ItemVendaRepository;
 import io.github.moniqueparente.MPPecas.services.ItemVendaServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ItemVendaService implements ItemVendaServiceInterface {
 
     @Autowired
     private ItemVendaRepository itemVendaRepositorio;
-    private Integer id;
 
-    public ItemVenda criar (ItemVenda itemVenda){
-        ItemVenda itemVendaSalvo = itemVendaRepositorio.save(itemVenda);
+    public ItemVendaDto criar (ItemVenda itemVenda){
 
-        return itemVendaSalvo;
+        ItemVenda itemvendasalvo =itemVendaRepositorio.save(itemVenda);
+
+        return new ItemVendaDto(itemVenda);
     }
 
-    public ItemVenda atualizar(ItemVenda itemVenda, Integer id){
+    public ItemVenda atualizar(ItemVendaDto itemVendaDto, Integer id){
 
-        ItemVenda itemVendaObtido = this.obter(id);
-        itemVendaObtido.setValor(itemVendaObtido.getValor());
-        itemVendaObtido.setQuantidade(itemVendaObtido.getQuantidade());
-        itemVendaObtido.setProduto(itemVendaObtido.getProduto());
-
-        itemVendaRepositorio.save(itemVendaObtido);
-
-        return itemVenda;
+        return itemVendaRepositorio.findById(id)
+                .map(itemVenda -> {
+                    itemVenda.setValor(itemVendaDto.getValor());
+                    itemVenda.setQuantidade(itemVendaDto.getQuantidade());
+                    itemVenda.setProduto(itemVendaDto.getProduto());
+                    return itemVendaRepositorio.save(itemVenda);
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public void deletar (Integer id) {
@@ -39,18 +42,20 @@ public class ItemVendaService implements ItemVendaServiceInterface {
     }
 
 
-    public List<ItemVenda> listar() {
-        List<ItemVenda> itemVendaListada = itemVendaRepositorio.findAll();
+    public List<ItemVendaDto> listar() {
 
-        return  itemVendaListada;
+        List<ItemVendaDto> listaItemVendaDto = new ArrayList<>();
+
+        itemVendaRepositorio.findAll().stream()
+                .forEach(itemVenda -> listaItemVendaDto.add(new ItemVendaDto(itemVenda)));
+
+        return listaItemVendaDto;
     }
 
 
-    public ItemVenda obter (Integer id) {
+    public ItemVendaDto obter (Integer id) {
 
-        Optional<ItemVenda> obj = itemVendaRepositorio.findById(id);
-
-        return obj.get();
+        return new ItemVendaDto(itemVendaRepositorio.findById(id).get());
     }
 
 }

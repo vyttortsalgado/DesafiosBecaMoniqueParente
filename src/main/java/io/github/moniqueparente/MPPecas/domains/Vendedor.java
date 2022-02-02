@@ -1,5 +1,6 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.VendedorDto;
 import lombok.Builder;
 
 import javax.persistence.Entity;
@@ -23,6 +24,10 @@ public class Vendedor {
     public Vendedor(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Vendedor(VendedorDto vendedorDto){
+        this.nome = vendedorDto.getNome();
     }
 
     public Integer getId() {

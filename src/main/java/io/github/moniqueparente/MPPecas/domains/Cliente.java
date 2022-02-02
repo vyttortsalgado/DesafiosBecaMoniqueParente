@@ -1,5 +1,6 @@
 package io.github.moniqueparente.MPPecas.domains;
 
+import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
 import lombok.Builder;
 
 import javax.persistence.Entity;
@@ -27,11 +28,15 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Integer getId(Integer id) {
-
-        return this.id;
+    public Cliente(ClienteDto clienteDto){
+        this.nome = clienteDto.getNome();
+        this.cpf = clienteDto.getCpf();
     }
- 
+
+    public Integer getId() {
+        return id;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

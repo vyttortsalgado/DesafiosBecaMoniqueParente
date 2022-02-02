@@ -1,6 +1,7 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Venda;
+import io.github.moniqueparente.MPPecas.dto.request.VendaDto;
 import io.github.moniqueparente.MPPecas.services.imp.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +17,17 @@ public class VendaController {
     private VendaService vendaService;
 
     @PostMapping
-    public ResponseEntity<Venda> criar(@RequestBody Venda venda){
-        Venda vendaCriada = vendaService.criar(venda);
+    public ResponseEntity<VendaDto> criar(@RequestBody Venda venda){
 
-        return ResponseEntity.created(null).body(vendaCriada);
+        return ResponseEntity.created(null).body(vendaService.criar(venda));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Venda> atualizar(@RequestBody Venda venda, @PathVariable Integer id){
-        Venda vendaAtualizada = vendaService.atualizar(venda,id);
+    public ResponseEntity<VendaDto> atualizar(@RequestBody VendaDto vendaDto,
+                                              @PathVariable Integer id){
 
-        return ResponseEntity.ok(vendaAtualizada);
-
+        return ResponseEntity.created(null)
+                .body(new VendaDto(vendaService.atualizar(vendaDto,id)));
     }
 
     @DeleteMapping("/{id}")
@@ -38,19 +38,16 @@ public class VendaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Venda>> listar(){
+    public ResponseEntity<List<VendaDto>> listar(){
 
-        List<Venda> vendaListada = vendaService.listar();
-
-        return ResponseEntity.ok(vendaListada);
-
+        List<VendaDto> vendaLista = vendaService.listar();
+        return ResponseEntity.ok(vendaLista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Venda> obter(@PathVariable Integer id){
-        Venda vendaObtida = vendaService.obter(id);
+    public ResponseEntity<VendaDto> obter(@PathVariable Integer id){
 
-        return  ResponseEntity.ok(vendaObtida);
-
+        VendaDto vendaObtida = vendaService.obter(id);
+        return ResponseEntity.ok(vendaObtida);
     }
 }

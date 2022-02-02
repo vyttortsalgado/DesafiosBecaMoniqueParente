@@ -1,5 +1,6 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
+import io.github.moniqueparente.MPPecas.domains.Produto;
 import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
 import io.github.moniqueparente.MPPecas.services.imp.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,9 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @PostMapping
-    public ResponseEntity<ProdutoDto> criar(@RequestBody ProdutoDto produtoDto){
-            ProdutoDto produto = produtoService.criar(produtoDto);
+    public ResponseEntity<ProdutoDto> criar(@RequestBody Produto produto){
 
-        return ResponseEntity.created(null).body(produto);
+        return ResponseEntity.created(null).body(produtoService.criar(produto));
     }
 
     @PatchMapping("/{id}")
@@ -28,13 +28,12 @@ public class ProdutoController {
 
         return ResponseEntity.created(null)
                 .body(new ProdutoDto(produtoService.atualizar(produtoDto,id)));
-
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ProdutoDto> deletar(@PathVariable Integer id) {
-        produtoService.deletar(id);
 
+        produtoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
 
@@ -42,7 +41,6 @@ public class ProdutoController {
     public ResponseEntity<List<ProdutoDto>> Listar(){
 
         List<ProdutoDto> produtoLista = produtoService.listar();
-
         return ResponseEntity.ok(produtoLista);
     }
 
@@ -50,7 +48,6 @@ public class ProdutoController {
     public ResponseEntity<ProdutoDto> obter(@PathVariable Integer id){
 
         ProdutoDto produtoObtido = produtoService.obter(id);
-
         return ResponseEntity.ok(produtoObtido);
     }
 

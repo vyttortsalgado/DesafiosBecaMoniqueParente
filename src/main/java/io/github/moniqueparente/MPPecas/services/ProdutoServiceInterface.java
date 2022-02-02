@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProdutoServiceInterface {
 
-    ProdutoDto criar (ProdutoDto produtoDto);
+    ProdutoDto criar (Produto produto);
     Produto atualizar (ProdutoDto produtoDto, Integer id);
     void deletar (Integer id);
     List<ProdutoDto> listar();

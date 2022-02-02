@@ -1,6 +1,7 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
+import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDto;
 import io.github.moniqueparente.MPPecas.services.imp.ItemVendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +17,17 @@ public class ItemVendaController {
     private ItemVendaService itemVendaService;
 
     @PostMapping
-    public ResponseEntity<ItemVenda> criar(@RequestBody ItemVenda itemVenda){
-        ItemVenda itemVendaCriado = itemVendaService.criar(itemVenda);
+    public ResponseEntity<ItemVendaDto> criar(@RequestBody ItemVenda itemVenda){
 
-        return ResponseEntity.created(null).body(itemVendaCriado);
+        return ResponseEntity.created(null).body(itemVendaService.criar(itemVenda));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ItemVenda> atualizar(@RequestBody ItemVenda itemVenda, @PathVariable Integer id){
-        ItemVenda itemVendaAtualizado = itemVendaService.atualizar(itemVenda,id);
+    public ResponseEntity<ItemVendaDto> atualizar(@RequestBody ItemVendaDto itemVendaDto,
+                                                  @PathVariable Integer id){
 
-        return ResponseEntity.ok(itemVendaAtualizado);
-
+        return ResponseEntity.created(null)
+                .body(new ItemVendaDto(itemVendaService.atualizar(itemVendaDto,id)));
     }
 
     @DeleteMapping("/{id}")
@@ -38,18 +38,17 @@ public class ItemVendaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ItemVenda>> Lista(){
-        List<ItemVenda> itemVendaListada = itemVendaService.listar();
+    public ResponseEntity<List<ItemVendaDto>> Lista(){
 
-        return ResponseEntity.ok(itemVendaListada);
+        List<ItemVendaDto> itemVendaLista = itemVendaService.listar();
+        return ResponseEntity.ok(itemVendaLista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ItemVenda> obter(@PathVariable Integer id) {
-        ItemVenda itemVendaObtida = itemVendaService.obter(id);
+    public ResponseEntity<ItemVendaDto> obter(@PathVariable Integer id) {
 
-        return ResponseEntity.ok(itemVendaObtida);
-
+        ItemVendaDto itemVendaObtido = itemVendaService.obter(id);
+        return ResponseEntity.ok(itemVendaObtido);
     }
 
 }
