@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VendedorDto {
+
     private String nome;
 
     public VendedorDto(Vendedor vendedor) {
 
         this.nome = vendedor.getNome();
     }
-
 }
 

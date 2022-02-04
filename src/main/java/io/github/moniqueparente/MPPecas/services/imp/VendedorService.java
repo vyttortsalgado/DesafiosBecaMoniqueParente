@@ -28,7 +28,10 @@ public class VendedorService implements VendedorServiceInterface {
     public Vendedor atualizar (VendedorDto vendedorDto, Integer id){
 
         return vendedorRepositorio.findById(id)
-                .map(vendedor -> vendedorRepositorio.save(vendedor))
+                .map(vendedor -> {
+                    vendedor.setNome(vendedorDto.getNome());
+                    return vendedorRepositorio.save(vendedor);
+                })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 

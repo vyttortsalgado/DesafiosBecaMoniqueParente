@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemVendaDto {
+
     private Double valor;
     private Integer quantidade;
     private Produto produto;
@@ -19,6 +20,5 @@ public class ItemVendaDto {
         this.quantidade = itemVenda.getQuantidade();
         this.produto = itemVenda.getProduto();
     }
-
 
 }

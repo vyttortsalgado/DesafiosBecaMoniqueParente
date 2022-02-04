@@ -19,7 +19,6 @@ public class VendaDto {
         this.vendedor = venda.getVendedor();
         this.cliente = venda.getCliente();
         this.itemVendaLista = venda.getItemVendaLista();
+
     }
-
-
 }

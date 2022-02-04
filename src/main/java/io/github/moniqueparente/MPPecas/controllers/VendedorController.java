@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class VendedorController {
     private VendedorService vendedorService;
 
     @PostMapping
-    public ResponseEntity<VendedorDto> criar(@RequestBody Vendedor vendedor){
+    public ResponseEntity<VendedorDto> criar(@RequestBody @Valid Vendedor vendedor){
 
         return ResponseEntity.created(null).body(vendedorService.criar(vendedor));
     }

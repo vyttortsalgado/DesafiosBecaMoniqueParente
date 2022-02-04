@@ -30,9 +30,9 @@ public class ProdutoService implements ProdutoServiceInterface {
     public Produto atualizar (ProdutoDto produtoDto, Integer id){
 
         return produtoRepositorio.findById(id)
-                .map(itemVenda -> {
-                    itemVenda.setNome(produtoDto.getNome());
-                    return produtoRepositorio.save(itemVenda);
+                .map(produto -> {
+                    produto.setNome(produtoDto.getNome());
+                    return produtoRepositorio.save(produto);
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }

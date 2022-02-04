@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProdutoDto {
+
     private String nome;
     private String marca;
 
@@ -16,7 +17,6 @@ public class ProdutoDto {
         this.nome = produto.getNome();
         this.marca = produto.getMarca();
     }
-
 
 }
 

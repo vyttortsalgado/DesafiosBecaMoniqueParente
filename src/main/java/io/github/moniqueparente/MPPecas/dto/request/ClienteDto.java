@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClienteDto {
+
     private String nome;
     private String cpf;
 
@@ -16,6 +17,4 @@ public class ClienteDto {
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
     }
-
-
 }
