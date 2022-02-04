@@ -1,8 +1,8 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
-import io.github.moniqueparente.MPPecas.domains.Produto;
 import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
 import io.github.moniqueparente.MPPecas.services.imp.ProdutoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
@@ -18,9 +19,9 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @PostMapping
-    public ResponseEntity<ProdutoDto> criar(@RequestBody @Valid Produto produto){
+    public ResponseEntity<ProdutoDto> criar(@RequestBody @Valid ProdutoDto produtoDto){
 
-        return ResponseEntity.created(null).body(produtoService.criar(produto));
+        return ResponseEntity.created(null).body(produtoService.criar(produtoDto));
     }
 
     @PatchMapping("/{id}")
@@ -28,7 +29,7 @@ public class ProdutoController {
                                                 @PathVariable Integer id){
 
         return ResponseEntity.created(null)
-                .body(new ProdutoDto(produtoService.atualizar(produtoDto,id)));
+                .body(produtoService.atualizar(produtoDto,id));
     }
 
     @DeleteMapping("/{id}")

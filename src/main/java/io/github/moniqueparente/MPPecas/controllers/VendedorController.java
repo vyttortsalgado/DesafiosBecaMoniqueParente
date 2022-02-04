@@ -3,6 +3,7 @@ package io.github.moniqueparente.MPPecas.controllers;
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
 import io.github.moniqueparente.MPPecas.dto.request.VendedorDto;
 import io.github.moniqueparente.MPPecas.services.imp.VendedorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/vendedor")
 public class VendedorController {

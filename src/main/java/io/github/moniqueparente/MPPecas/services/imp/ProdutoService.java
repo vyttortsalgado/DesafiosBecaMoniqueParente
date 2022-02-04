@@ -2,8 +2,10 @@ package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
 import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
+import io.github.moniqueparente.MPPecas.mappers.ProdutoMapper;
 import io.github.moniqueparente.MPPecas.repository.ProdutoRepository;
 import io.github.moniqueparente.MPPecas.services.ProdutoServiceInterface;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,29 +14,31 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class ProdutoService implements ProdutoServiceInterface {
 
     @Autowired
     private ProdutoRepository produtoRepositorio;
+
+    @Autowired
+    private ProdutoMapper produtoMapper;
+
     private Object Produto;
     private Object List;
 
-    public ProdutoDto criar (Produto produto){
+    public ProdutoDto criar (ProdutoDto produtoDto){
 
-        Produto produtosalvo = produtoRepositorio.save(produto);
-
-        return new ProdutoDto(produto);
+        Produto produtoalvo = produtoRepositorio.save(produtoMapper.produto(produtoDto));
+        return produtoMapper.produtoDto(produtoalvo);
     }
 
-    public Produto atualizar (ProdutoDto produtoDto, Integer id){
+    public ProdutoDto atualizar (ProdutoDto produtoDto, Integer id){
 
-        return produtoRepositorio.findById(id)
-                .map(produto -> {
-                    produto.setNome(produtoDto.getNome());
-                    return produtoRepositorio.save(produto);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return produtoMapper.produtoDto(produtoRepositorio.findById(id)
+                .map(produtoObtidoId -> produtoRepositorio.save(produtoMapper.produto(produtoDto)))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+
     }
 
     public void deletar (Integer id) {

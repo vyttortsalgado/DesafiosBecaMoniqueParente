@@ -2,8 +2,10 @@ package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Venda;
 import io.github.moniqueparente.MPPecas.dto.request.VendaDto;
+import io.github.moniqueparente.MPPecas.mappers.VendaMapper;
 import io.github.moniqueparente.MPPecas.repository.VendaRepository;
 import io.github.moniqueparente.MPPecas.services.VendaServiceInterface;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,17 +14,21 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class VendaService implements VendaServiceInterface {
 
     @Autowired
     private VendaRepository vendaRepositorio;
 
+    @Autowired
+    private VendaMapper vendaMapper;
+
     public VendaDto criar(Venda venda) {
 
         Venda vendasalva = vendaRepositorio.save(venda);
 
-        return new VendaDto(venda);
+        return vendaMapper.vendaDto(vendasalva);
     }
 
     public Venda atualizar(VendaDto vendaDto, Integer id) {

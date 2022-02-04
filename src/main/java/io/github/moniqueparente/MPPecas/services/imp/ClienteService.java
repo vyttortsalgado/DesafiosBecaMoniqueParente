@@ -2,8 +2,10 @@ package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
 import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
+import io.github.moniqueparente.MPPecas.mappers.ClienteMapper;
 import io.github.moniqueparente.MPPecas.repository.ClienteRepository;
 import io.github.moniqueparente.MPPecas.services.ClienteServiceInterface;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,28 +14,28 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@RequiredArgsConstructor
 @Service
 public class ClienteService implements ClienteServiceInterface {
 
     @Autowired
     private ClienteRepository clienteRepositorio;
 
-    public ClienteDto criar(Cliente cliente) {
+    @Autowired
+    private ClienteMapper clienteMapper;
 
-        Cliente clientesalvo = clienteRepositorio.save(cliente);
+    public ClienteDto criar(ClienteDto clienteDto) {
 
-        return new ClienteDto(cliente);
+        Cliente clientealvo = clienteRepositorio.save(clienteMapper.cliente(clienteDto));
+        return clienteMapper.clienteDto(clientealvo);
     }
 
-    public Cliente atualizar (ClienteDto clienteDto, Integer id){
+    public ClienteDto atualizar (ClienteDto clienteDto, Integer id){
 
-        return clienteRepositorio.findById(id)
-                .map(cliente -> {
-                    cliente.setNome(clienteDto.getNome());
-                    cliente.setCpf(clienteDto.getCpf());
-                    return clienteRepositorio.save(cliente);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return clienteMapper.clienteDto(clienteRepositorio.findById(id)
+                .map(clienteObtidoId -> clienteRepositorio.save(clienteMapper.cliente(clienteDto)))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     public void deletar (Integer id){
