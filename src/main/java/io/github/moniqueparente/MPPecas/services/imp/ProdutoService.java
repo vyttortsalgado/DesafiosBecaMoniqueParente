@@ -1,61 +1,71 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Produto;
-import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
+import io.github.moniqueparente.MPPecas.dto.request.ProdutoDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.ProdutoDtoResponse;
+import io.github.moniqueparente.MPPecas.mappers.MapperProdutoAtualizar;
+import io.github.moniqueparente.MPPecas.mappers.MapperProdutoRequestToProduto;
+import io.github.moniqueparente.MPPecas.mappers.MapperProdutoToProdutoResponse;
 import io.github.moniqueparente.MPPecas.repository.ProdutoRepository;
 import io.github.moniqueparente.MPPecas.services.ProdutoServiceInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class ProdutoService implements ProdutoServiceInterface {
 
-    @Autowired
-    private ProdutoRepository produtoRepositorio;
-    private Object Produto;
-    private Object List;
 
-    public ProdutoDto criar (Produto produto){
+    private final ProdutoRepository produtoRepository;
+    private final MapperProdutoRequestToProduto mapperProdutoRequestToProduto;
+    private final MapperProdutoToProdutoResponse mapperProdutoToProdutoResponse;
+    private final MapperProdutoAtualizar mapperProdutoAtualizar;
 
-        Produto produtosalvo = produtoRepositorio.save(produto);
 
-        return new ProdutoDto(produto);
+    public ProdutoDtoResponse criar (@Valid ProdutoDtoRequest produtoDtoRequest){
+        Produto produto = mapperProdutoRequestToProduto.toModel(produtoDtoRequest);
+
+        produtoRepository.save(produto);
+
+        ProdutoDtoResponse produtoDtoResponse = mapperProdutoToProdutoResponse.toResponse(produto);
+
+        return produtoDtoResponse;
     }
 
-    public Produto atualizar (ProdutoDto produtoDto, Integer id){
+    public ProdutoDtoResponse atualizar (ProdutoDtoRequest produtoDtoRequest, Integer id){
+        Produto produtoObtido = produtoRepository.findById(id).get();
 
-        return produtoRepositorio.findById(id)
-                .map(itemVenda -> {
-                    itemVenda.setNome(produtoDto.getNome());
-                    return produtoRepositorio.save(itemVenda);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        mapperProdutoAtualizar.atualizar(produtoDtoRequest, produtoObtido);
+
+        produtoRepository.save(produtoObtido);
+
+        return mapperProdutoToProdutoResponse.toResponse(produtoObtido);
     }
 
     public void deletar (Integer id) {
 
-        produtoRepositorio.deleteById(id);
+        produtoRepository.deleteById(id);
     }
 
-    public List<ProdutoDto> listar() {
+    public List<ProdutoDtoResponse> listar() {
 
-        List<ProdutoDto> listaProdutoDto = new ArrayList<>();
+        List<Produto> listaProduto = produtoRepository.findAll();
 
-        produtoRepositorio.findAll().stream()
-                .forEach(produto -> listaProdutoDto.add(new ProdutoDto(produto)));
+       return listaProduto
+                .stream()
+                .map(mapperProdutoToProdutoResponse::toResponse)
+                .collect(Collectors.toList());
 
-        return listaProdutoDto;
     }
 
-    public ProdutoDto obter (Integer id){
+    public ProdutoDtoResponse obter (Integer id){
+        Produto produto = produtoRepository.findById(id).get();
 
-        return new ProdutoDto(produtoRepositorio.findById(id).get());
+        return mapperProdutoToProdutoResponse.toResponse(produto);
     }
-
 }
 

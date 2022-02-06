@@ -1,16 +1,16 @@
 package io.github.moniqueparente.MPPecas.services;
 
-import io.github.moniqueparente.MPPecas.domains.Produto;
-import io.github.moniqueparente.MPPecas.dto.request.ProdutoDto;
+import io.github.moniqueparente.MPPecas.dto.request.ProdutoDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.ProdutoDtoResponse;
 
 import java.util.List;
 
 public interface ProdutoServiceInterface {
 
-    ProdutoDto criar (Produto produto);
-    Produto atualizar (ProdutoDto produtoDto, Integer id);
+    ProdutoDtoResponse criar (ProdutoDtoRequest produtoDtoRequest);
+    ProdutoDtoResponse atualizar (ProdutoDtoRequest produtoDtoRequest, Integer id);
     void deletar (Integer id);
-    List<ProdutoDto> listar();
-    ProdutoDto obter (Integer id);
+    List<ProdutoDtoResponse> listar();
+    ProdutoDtoResponse obter (Integer id);
 
 }

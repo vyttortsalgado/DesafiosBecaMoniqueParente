@@ -1,81 +1,31 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
-import lombok.Builder;
+import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Objects;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-@Builder
+@Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank(message = "Por favor preencha o campo")
+    @Pattern(regexp = "^[A-Z]+(.)*", message = "Inicie com letra maiúscula")
     private String nome;
+
+    @CPF(message = "Por favor preencha o campo")
+    @NotBlank(message = "Por favor preencha o campo")
     private String cpf;
 
-    public Cliente() {
-    }
-
-    public Cliente(Integer id, String nome, String cpf) {
-        this.id = id;
-        this.nome = nome;
-        this.cpf = cpf;
-    }
-
-    public Cliente(ClienteDto clienteDto){
-        this.nome = clienteDto.getNome();
-        this.cpf = clienteDto.getCpf();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return id.equals(cliente.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                '}';
-    }
 }

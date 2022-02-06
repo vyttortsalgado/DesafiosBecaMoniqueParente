@@ -1,57 +1,66 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Cliente;
-import io.github.moniqueparente.MPPecas.dto.request.ClienteDto;
+import io.github.moniqueparente.MPPecas.dto.request.ClienteDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.ClienteDtoResponse;
+import io.github.moniqueparente.MPPecas.mappers.*;
 import io.github.moniqueparente.MPPecas.repository.ClienteRepository;
 import io.github.moniqueparente.MPPecas.services.ClienteServiceInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
+
+@RequiredArgsConstructor
 @Service
 public class ClienteService implements ClienteServiceInterface {
 
-    @Autowired
-    private ClienteRepository clienteRepositorio;
+    private final ClienteRepository clienteRepository;
+    private final MapperClienteRequestToCliente mapperClienteRequestToCliente;
+    private final MapperClienteToClienteResponse mapperClienteToClienteResponse;
+    private final MapperClienteAtualizar mapperClienteAtualizar;
 
-    public ClienteDto criar(Cliente cliente) {
 
-        Cliente clientesalvo = clienteRepositorio.save(cliente);
+    public ClienteDtoResponse criar(@Valid ClienteDtoRequest clienteDtoRequest) {
+        Cliente cliente = mapperClienteRequestToCliente.toModel(clienteDtoRequest);
 
-        return new ClienteDto(cliente);
+        clienteRepository.save(cliente);
+
+        ClienteDtoResponse clienteDtoResponse = mapperClienteToClienteResponse.toResponse(cliente);
+
+        return clienteDtoResponse;
     }
 
-    public Cliente atualizar (ClienteDto clienteDto, Integer id){
+    public ClienteDtoResponse atualizar (ClienteDtoRequest clienteDtoResquest, Integer id){
+        Cliente clienteObtido = clienteRepository.findById(id).get();
 
-        return clienteRepositorio.findById(id)
-                .map(cliente -> {
-                    cliente.setNome(clienteDto.getNome());
-                    cliente.setCpf(clienteDto.getCpf());
-                    return clienteRepositorio.save(cliente);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        mapperClienteAtualizar.atualizar(clienteDtoResquest, clienteObtido);
+
+        clienteRepository.save(clienteObtido);
+
+        return mapperClienteToClienteResponse.toResponse(clienteObtido);
     }
 
     public void deletar (Integer id){
-        clienteRepositorio.deleteById(id);
+        clienteRepository.deleteById(id);
     }
 
-    public List<ClienteDto> listar() {
+    public List<ClienteDtoResponse> listar() {
 
-        List<ClienteDto> listaClienteDto = new ArrayList<>();
+        List<Cliente> listaCliente = clienteRepository.findAll();
 
-        clienteRepositorio.findAll().stream()
-                .forEach(cliente -> listaClienteDto.add(new ClienteDto(cliente)));
-
-        return listaClienteDto;
+        return listaCliente
+                .stream()
+                .map(mapperClienteToClienteResponse::toResponse)
+                .collect(Collectors.toList());
     }
 
-    public ClienteDto obter (Integer id) {
+    public ClienteDtoResponse obter (Integer id) {
+        Cliente cliente = clienteRepository.findById(id).get();
 
-        return new ClienteDto(clienteRepositorio.findById(id).get());
+        return mapperClienteToClienteResponse.toResponse(cliente);
     }
 }
