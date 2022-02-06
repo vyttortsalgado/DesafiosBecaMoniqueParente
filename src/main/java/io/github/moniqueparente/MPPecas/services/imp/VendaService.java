@@ -1,66 +1,67 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.Venda;
-import io.github.moniqueparente.MPPecas.dto.request.VendaDto;
-import io.github.moniqueparente.MPPecas.mappers.VendaMapper;
+import io.github.moniqueparente.MPPecas.dto.request.VendaDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.VendaDtoResponse;
+import io.github.moniqueparente.MPPecas.mappers.MapperVendaAtualizar;
+import io.github.moniqueparente.MPPecas.mappers.MapperVendaRequestToVenda;
+import io.github.moniqueparente.MPPecas.mappers.MapperVendaToVendaResponse;
 import io.github.moniqueparente.MPPecas.repository.VendaRepository;
 import io.github.moniqueparente.MPPecas.services.VendaServiceInterface;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class VendaService implements VendaServiceInterface {
 
-    @Autowired
-    private VendaRepository vendaRepositorio;
+    private final VendaRepository vendaRepository;
+    private final MapperVendaRequestToVenda mapperVendaRequestToVenda;
+    private final MapperVendaToVendaResponse mapperVendaToVendaResponse;
+    private final MapperVendaAtualizar mapperVendaAtualizar;
 
-    @Autowired
-    private VendaMapper vendaMapper;
+    public VendaDtoResponse criar(VendaDtoRequest vendaDtoRequest) {
+        Venda venda = mapperVendaRequestToVenda.toModel(vendaDtoRequest);
 
-    public VendaDto criar(Venda venda) {
+        vendaRepository.save(venda);
 
-        Venda vendasalva = vendaRepositorio.save(venda);
+        VendaDtoResponse vendaDtoResponse = mapperVendaToVendaResponse.toResponse(venda);
 
-        return vendaMapper.vendaDto(vendasalva);
+        return vendaDtoResponse;
     }
 
-    public Venda atualizar(VendaDto vendaDto, Integer id) {
+    public VendaDtoResponse atualizar(VendaDtoRequest vendaDtoRequest, Integer id) {
+        Venda vendaObtida = vendaRepository.findById(id).get();
 
-        return vendaRepositorio.findById(id)
-                .map(venda -> {
-                    venda.setVendedor(venda.getVendedor());
-                    venda.setCliente(venda.getCliente());
-                    venda.setItemVendaLista(vendaDto.getItemVendaLista());
-                    return vendaRepositorio.save(venda);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        mapperVendaAtualizar.atualizar(vendaDtoRequest, vendaObtida);
+
+        vendaRepository.save(vendaObtida);
+
+        return mapperVendaToVendaResponse.toResponse(vendaObtida);
+
     }
 
     public void deletar (Integer id) {
-        vendaRepositorio.deleteById(id);
+        vendaRepository.deleteById(id);
     }
 
-    public List<VendaDto> listar() {
+    public List<VendaDtoResponse> listar() {
 
-        List<VendaDto> listaVendaDto = new ArrayList<>();
+        List<Venda> listaVenda = vendaRepository.findAll();
 
-        vendaRepositorio.findAll().stream()
-                .forEach(venda -> listaVendaDto.add(new VendaDto(venda)));
-
-        return listaVendaDto;
+        return listaVenda
+                .stream()
+                .map(mapperVendaToVendaResponse::toResponse)
+                .collect(Collectors.toList());
 
     }
 
-    public VendaDto obter (Integer id){
+    public VendaDtoResponse obter (Integer id){
+        Venda venda = vendaRepository.findById(id).get();
 
-        return new VendaDto(vendaRepositorio.findById(id).get());
+        return mapperVendaToVendaResponse.toResponse(venda);
     }
-
 }

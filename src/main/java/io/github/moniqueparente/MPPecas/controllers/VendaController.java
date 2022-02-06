@@ -1,7 +1,8 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Venda;
-import io.github.moniqueparente.MPPecas.dto.request.VendaDto;
+import io.github.moniqueparente.MPPecas.dto.request.VendaDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.VendaDtoResponse;
 import io.github.moniqueparente.MPPecas.services.imp.VendaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +20,16 @@ public class VendaController {
     private VendaService vendaService;
 
     @PostMapping
-    public ResponseEntity<VendaDto> criar(@RequestBody Venda venda){
+    public ResponseEntity<VendaDtoResponse> criar(@RequestBody VendaDtoRequest vendaDtoRequest){
 
-        return ResponseEntity.created(null).body(vendaService.criar(venda));
+        return ResponseEntity.created(null).body(vendaService.criar(vendaDtoRequest));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<VendaDto> atualizar(@RequestBody VendaDto vendaDto,
-                                              @PathVariable Integer id){
+    public ResponseEntity<VendaDtoResponse> atualizar(@RequestBody VendaDtoRequest vendaDtoRequest,
+                                                      @PathVariable Integer id){
 
-        return ResponseEntity.created(null)
-                .body(new VendaDto(vendaService.atualizar(vendaDto,id)));
+        return ResponseEntity.ok(vendaService.atualizar(vendaDtoRequest,id));
     }
 
     @DeleteMapping("/{id}")
@@ -40,16 +40,16 @@ public class VendaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<VendaDto>> listar(){
+    public ResponseEntity<List<VendaDtoResponse>> listar(){
 
-        List<VendaDto> vendaLista = vendaService.listar();
+        List<VendaDtoResponse> vendaLista = vendaService.listar();
         return ResponseEntity.ok(vendaLista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VendaDto> obter(@PathVariable Integer id){
+    public ResponseEntity<VendaDtoResponse> obter(@PathVariable Integer id){
 
-        VendaDto vendaObtida = vendaService.obter(id);
+        VendaDtoResponse vendaObtida = vendaService.obter(id);
         return ResponseEntity.ok(vendaObtida);
     }
 }

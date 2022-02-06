@@ -1,67 +1,70 @@
 package io.github.moniqueparente.MPPecas.services.imp;
 
 import io.github.moniqueparente.MPPecas.domains.ItemVenda;
-import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDto;
-import io.github.moniqueparente.MPPecas.mappers.ItemVendaMapper;
+import io.github.moniqueparente.MPPecas.dto.request.ItemVendaDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.ItemVendaDtoResponse;
+import io.github.moniqueparente.MPPecas.mappers.MapperItemVendaAtualizar;
+import io.github.moniqueparente.MPPecas.mappers.MapperItemVendaRequestToItemVenda;
+import io.github.moniqueparente.MPPecas.mappers.MapperItemVendaToItemVendaResponse;
 import io.github.moniqueparente.MPPecas.repository.ItemVendaRepository;
 import io.github.moniqueparente.MPPecas.services.ItemVendaServiceInterface;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class ItemVendaService implements ItemVendaServiceInterface {
 
-    @Autowired
-    private ItemVendaRepository itemVendaRepositorio;
+    private final ItemVendaRepository itemVendaRepository;
+    private final MapperItemVendaRequestToItemVenda mapperItemVendaRequestToItemVenda;
+    private final MapperItemVendaToItemVendaResponse mapperItemVendaToItemVendaResponse;
+    private final MapperItemVendaAtualizar mapperItemVendaAtualizar;
 
-    @Autowired
-    private ItemVendaMapper itemVendaMapper;
 
-    public ItemVendaDto criar (ItemVenda itemVenda){
+    public ItemVendaDtoResponse criar (@Valid ItemVendaDtoRequest itemVendaDtoRequest){
+        ItemVenda itemVenda = mapperItemVendaRequestToItemVenda.toModel(itemVendaDtoRequest);
 
-        ItemVenda itemvendasalvo =itemVendaRepositorio.save(itemVenda);
+        itemVendaRepository.save(itemVenda);
 
-        return itemVendaMapper.itemVendaDto(itemvendasalvo);
+        ItemVendaDtoResponse itemVendaDtoResponse = mapperItemVendaToItemVendaResponse.toResponse(itemVenda);
+
+        return itemVendaDtoResponse;
     }
 
-    public ItemVenda atualizar(ItemVendaDto itemVendaDto, Integer id){
+    public ItemVendaDtoResponse atualizar(ItemVendaDtoRequest itemVendaDtoRequest, Integer id){
+        ItemVenda itemVendaObtido = itemVendaRepository.findById(id).get();
 
-        return itemVendaRepositorio.findById(id)
-                .map(itemVenda -> {
-                    itemVenda.setValor(itemVendaDto.getValor());
-                    itemVenda.setQuantidade(itemVendaDto.getQuantidade());
-                    itemVenda.setProduto(itemVendaDto.getProduto());
-                    return itemVendaRepositorio.save(itemVenda);
-                })
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        mapperItemVendaAtualizar.atualizar(itemVendaDtoRequest, itemVendaObtido);
+
+        itemVendaRepository.save(itemVendaObtido);
+
+        return mapperItemVendaToItemVendaResponse.toResponse(itemVendaObtido);
     }
 
     public void deletar (Integer id) {
-        itemVendaRepositorio.deleteById(id);
+        itemVendaRepository.deleteById(id);
     }
 
 
-    public List<ItemVendaDto> listar() {
+    public List<ItemVendaDtoResponse> listar() {
 
-        List<ItemVendaDto> listaItemVendaDto = new ArrayList<>();
+        List<ItemVenda> listaItemVenda = itemVendaRepository.findAll();
 
-        itemVendaRepositorio.findAll().stream()
-                .forEach(itemVenda -> listaItemVendaDto.add(new ItemVendaDto(itemVenda)));
+        return listaItemVenda
+                .stream()
+                .map(mapperItemVendaToItemVendaResponse::toResponse)
+                .collect(Collectors.toList());
 
-        return listaItemVendaDto;
     }
 
+    public ItemVendaDtoResponse obter (Integer id) {
+        ItemVenda itemVenda = itemVendaRepository.findById(id).get();
 
-    public ItemVendaDto obter (Integer id) {
-
-        return new ItemVendaDto(itemVendaRepositorio.findById(id).get());
+        return mapperItemVendaToItemVendaResponse.toResponse(itemVenda);
     }
 
 }

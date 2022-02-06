@@ -1,7 +1,8 @@
 package io.github.moniqueparente.MPPecas.controllers;
 
 import io.github.moniqueparente.MPPecas.domains.Vendedor;
-import io.github.moniqueparente.MPPecas.dto.request.VendedorDto;
+import io.github.moniqueparente.MPPecas.dto.request.VendedorDtoRequest;
+import io.github.moniqueparente.MPPecas.dto.response.VendedorDtoResponse;
 import io.github.moniqueparente.MPPecas.services.imp.VendedorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,16 @@ public class VendedorController {
     private VendedorService vendedorService;
 
     @PostMapping
-    public ResponseEntity<VendedorDto> criar(@RequestBody @Valid Vendedor vendedor){
+    public ResponseEntity<VendedorDtoResponse> criar(@RequestBody @Valid VendedorDtoRequest vendedorDtoRequest){
 
-        return ResponseEntity.created(null).body(vendedorService.criar(vendedor));
+        return ResponseEntity.created(null).body(vendedorService.criar(vendedorDtoRequest));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<VendedorDto> atualizar(@RequestBody VendedorDto vendedorDto,
-                                                 @PathVariable Integer id){
+    public ResponseEntity<VendedorDtoResponse> atualizar(@RequestBody VendedorDtoRequest vendedorDtoRequest,
+                                                         @PathVariable Integer id){
 
-        return ResponseEntity.created(null)
-                .body(new VendedorDto(vendedorService.atualizar(vendedorDto,id)));
+        return ResponseEntity.ok(vendedorService.atualizar(vendedorDtoRequest,id));
     }
 
     @DeleteMapping("/{id}")
@@ -41,16 +41,16 @@ public class VendedorController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<VendedorDto>> listar(){
+    public ResponseEntity<List<VendedorDtoResponse>> listar(){
 
-        List<VendedorDto> vendedorLista = vendedorService.listar();
+        List<VendedorDtoResponse> vendedorLista = vendedorService.listar();
         return ResponseEntity.ok(vendedorLista);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VendedorDto> obter(@PathVariable Integer id){
+    public ResponseEntity<VendedorDtoResponse> obter(@PathVariable Integer id){
 
-        VendedorDto vendedorObtido = vendedorService.obter(id);
+        VendedorDtoResponse vendedorObtido = vendedorService.obter(id);
         return ResponseEntity.ok(vendedorObtido);
     }
 
