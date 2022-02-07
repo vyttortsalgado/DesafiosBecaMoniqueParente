@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VendedorDtoRequest extends VendaDtoRequest {
+public class VendedorDtoRequest {
 
     private Integer id;
     private String nome;

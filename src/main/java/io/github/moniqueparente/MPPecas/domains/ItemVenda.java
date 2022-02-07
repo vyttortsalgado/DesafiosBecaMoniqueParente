@@ -16,11 +16,10 @@ public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Min(value = 0, message = "A quantidade deve ser acima de Zero")
+    
     private Double valor;
 
-    @Min(value = 0, message = "A quantidade deve ser acima de Zero")
+    @Min(value = 1)
     private Integer quantidade;
 
     @OneToOne

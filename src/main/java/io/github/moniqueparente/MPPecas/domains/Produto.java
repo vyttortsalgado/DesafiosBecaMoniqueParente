@@ -21,11 +21,11 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Por favor preencha o campo")
-    @Pattern(regexp = "^[A-Z]+(.)*", message = "Inicie com letra maiúscula")
+    @NotBlank(message = "{campo.not.blank}")
+    @Pattern(regexp = "^[A-Z]+(.)*")
     private String nome;
 
-    @NotBlank(message = "Por favor preencha o campo")
+    @NotBlank(message = "{campo.not.blank}")
     private String marca;
 
 }
