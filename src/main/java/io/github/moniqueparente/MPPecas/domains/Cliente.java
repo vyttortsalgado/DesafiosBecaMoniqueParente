@@ -1,6 +1,8 @@
 package io.github.moniqueparente.MPPecas.domains;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Entity;
@@ -20,12 +22,12 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Por favor preencha o campo")
-    @Pattern(regexp = "^[A-Z]+(.)*", message = "Inicie com letra maiúscula")
+    @NotBlank(message = "{campo.not.blank}")
+    @Pattern(regexp = "^[A-Z]+(.)*")
     private String nome;
 
-    @CPF(message = "Por favor preencha o campo")
-    @NotBlank(message = "Por favor preencha o campo")
+    @CPF
+    @NotBlank(message = "{campo.not.blank}")
     private String cpf;
 
 }

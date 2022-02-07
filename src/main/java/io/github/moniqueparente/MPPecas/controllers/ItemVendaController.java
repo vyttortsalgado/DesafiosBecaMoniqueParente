@@ -28,8 +28,8 @@ public class ItemVendaController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ItemVenda> atualizar(@RequestBody ItemVendaDtoRequest itemVendaDtoRequest,
-                                               @PathVariable Integer id){
+    public ResponseEntity<ItemVendaDtoResponse> atualizar(@RequestBody ItemVendaDtoRequest itemVendaDtoRequest,
+                                                          @PathVariable Integer id){
 
         return ResponseEntity.ok(itemVendaService.atualizar(itemVendaDtoRequest,id));
     }
