@@ -1,4 +1,4 @@
-# DesafiosBeca - MoniqueParente
+# DesafiosBeca - MoniqueParente https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 
 Nome: Monique Parente Lima.|
 Categoria: CJ Junior – Center.| 
