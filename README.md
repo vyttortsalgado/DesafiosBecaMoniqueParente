@@ -7,15 +7,24 @@ ________________________________________________________________________________
 #Sumário
 
 1️⃣	Pensamentos Iniciais de Estruturação.
+
 2️⃣ Resumo da aplicação.
+
 3️⃣ Ferramentas.
+
 4️⃣ Frameworks.
-5️⃣ Endpoints
-6️⃣6.Controllers
-7️⃣7.Services
-8️⃣8.DTOs
-9️⃣9.Mappers
-🔟10.Tratamento de Erros
+
+5️⃣ Endpoints.
+
+6️⃣6.Controllers.
+
+7️⃣7.Services.
+
+8️⃣8.DTOs.
+
+9️⃣9.Mappers.
+
+🔟10.Tratamento de Erros.
 
 🔴Seja Bem-Vindo(a)!!
 
