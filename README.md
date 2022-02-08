@@ -140,6 +140,8 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
  Tipos tratados:
  `/MethodArgumentNotValidException`
  `/UnexpectedTypeException`
+ `/HttpMessageNotReadableException`
+ 
  
  
  
