@@ -1,6 +1,10 @@
 # DesafiosBeca (NTT DATA Europe & LATAM) - Monique Parente [![Blog](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/monique13/)
 
-<font color="red"> Mentor Flavius Gama </font>
+#header {
+	border-top: 10px solid #11242e;
+	background: #193442;
+ text: "Mentor Flavius Gama"
+}
 ______________________________________________________________________________________________________________________________________________________________________________
 
 ![Monique GitHub stats](https://github-readme-stats.vercel.app/api?username=MoniqueParente&show_icons=true&theme=radical)
