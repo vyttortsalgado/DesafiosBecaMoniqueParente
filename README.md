@@ -67,15 +67,17 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 * Postman - Simulação de Interface.
 * H2 - Banco de Dados.
 
-✅4️⃣	Frameworks
-`/
+✅4️⃣ Linguage de Programação &	Frameworks
+
+<div style="display: inline_block"><br/>
+	https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white
+ </div><br/>
 * JPA.
 * Spring Boot.
 * Lambdas.
 * JDBC.
 * JSON.
 * Swagger.
-`
 
 ✅5️⃣ Endpoints
  
