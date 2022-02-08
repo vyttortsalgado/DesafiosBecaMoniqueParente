@@ -1,6 +1,4 @@
-# DesafiosBeca (NTT DATA Europe & LATAM) - MoniqueParente [![Blog](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/monique13/)
-
-*Nome: Monique Parente Lima.
+# DesafiosBeca (NTT DATA Europe & LATAM) - Monique Parente Lima [![Blog](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/monique13/)
 
 *Categoria: CJ Junior – Center.
 
