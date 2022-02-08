@@ -5,7 +5,7 @@ Categoria: CJ Junior – Center.|
 Mentor: Flavius Gama.
 ______________________________________________________________________________________________________________________________________________________________________________
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=radical)
+![Monique GitHub stats](https://github-readme-stats.vercel.app/api?username=MoniqueParente&show_icons=true&theme=radical)
 ______________________________________________________________________________________________________________________________________________________________________________
 # Sumário
 
