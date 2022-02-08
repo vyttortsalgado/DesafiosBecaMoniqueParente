@@ -2,7 +2,7 @@
 
 Categoria: CJ Junior – Center.
 
-- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `#c5f015`
+- ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) `Mentor Flavius Gama`
 ______________________________________________________________________________________________________________________________________________________________________________
 
 ![Monique GitHub stats](https://github-readme-stats.vercel.app/api?username=MoniqueParente&show_icons=true&theme=radical)
