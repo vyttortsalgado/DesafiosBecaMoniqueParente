@@ -27,7 +27,7 @@ public class VendedorController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<VendedorDtoResponse> atualizar(@RequestBody VendedorDtoRequest vendedorDtoRequest,
+    public ResponseEntity<VendedorDtoResponse> atualizar(@RequestBody @Valid VendedorDtoRequest vendedorDtoRequest,
                                                          @PathVariable Integer id){
 
         return ResponseEntity.ok(vendedorService.atualizar(vendedorDtoRequest,id));
@@ -53,5 +53,4 @@ public class VendedorController {
         VendedorDtoResponse vendedorObtido = vendedorService.obter(id);
         return ResponseEntity.ok(vendedorObtido);
     }
-
 }

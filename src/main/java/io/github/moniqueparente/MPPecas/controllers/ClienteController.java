@@ -26,7 +26,7 @@ public class ClienteController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ClienteDtoResponse> atualizar(@RequestBody ClienteDtoRequest clienteDtoRequest,
+    public ResponseEntity<ClienteDtoResponse> atualizar(@RequestBody @ Valid ClienteDtoRequest clienteDtoRequest,
                                              @PathVariable Integer id){
         return ResponseEntity.ok(clienteService.atualizar(clienteDtoRequest,id));
     }

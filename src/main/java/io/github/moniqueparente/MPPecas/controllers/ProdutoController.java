@@ -26,7 +26,7 @@ public class ProdutoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ProdutoDtoResponse> atualizar(@RequestBody ProdutoDtoRequest produtoDtoRequest,
+    public ResponseEntity<ProdutoDtoResponse> atualizar(@RequestBody @Valid ProdutoDtoRequest produtoDtoRequest,
                                                 @PathVariable Integer id){
 
         return ResponseEntity.ok(produtoService.atualizar(produtoDtoRequest,id));
@@ -52,5 +52,4 @@ public class ProdutoController {
         ProdutoDtoResponse produtoObtido = produtoService.obter(id);
         return ResponseEntity.ok(produtoObtido);
     }
-
 }

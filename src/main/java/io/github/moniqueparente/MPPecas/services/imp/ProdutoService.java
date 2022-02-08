@@ -10,6 +10,7 @@ import io.github.moniqueparente.MPPecas.repository.ProdutoRepository;
 import io.github.moniqueparente.MPPecas.services.ProdutoServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,7 +27,8 @@ public class ProdutoService implements ProdutoServiceInterface {
     private final MapperProdutoAtualizar mapperProdutoAtualizar;
 
 
-    public ProdutoDtoResponse criar (@Valid ProdutoDtoRequest produtoDtoRequest){
+    public ProdutoDtoResponse criar(@RequestBody @Valid ProdutoDtoRequest produtoDtoRequest) {
+
         Produto produto = mapperProdutoRequestToProduto.toModel(produtoDtoRequest);
 
         produtoRepository.save(produto);
@@ -36,7 +38,8 @@ public class ProdutoService implements ProdutoServiceInterface {
         return produtoDtoResponse;
     }
 
-    public ProdutoDtoResponse atualizar (ProdutoDtoRequest produtoDtoRequest, Integer id){
+    public ProdutoDtoResponse atualizar(@RequestBody @Valid ProdutoDtoRequest produtoDtoRequest, Integer id) {
+
         Produto produtoObtido = produtoRepository.findById(id).get();
 
         mapperProdutoAtualizar.atualizar(produtoDtoRequest, produtoObtido);
@@ -46,7 +49,7 @@ public class ProdutoService implements ProdutoServiceInterface {
         return mapperProdutoToProdutoResponse.toResponse(produtoObtido);
     }
 
-    public void deletar (Integer id) {
+    public void deletar(Integer id) {
 
         produtoRepository.deleteById(id);
     }
@@ -55,17 +58,18 @@ public class ProdutoService implements ProdutoServiceInterface {
 
         List<Produto> listaProduto = produtoRepository.findAll();
 
-       return listaProduto
-                .stream()
-                .map(mapperProdutoToProdutoResponse::toResponse)
-                .collect(Collectors.toList());
-
+            return listaProduto
+                    .stream()
+                    .map(mapperProdutoToProdutoResponse::toResponse)
+                    .collect(Collectors.toList());
     }
 
-    public ProdutoDtoResponse obter (Integer id){
+
+    public ProdutoDtoResponse obter(Integer id) {
         Produto produto = produtoRepository.findById(id).get();
 
-        return mapperProdutoToProdutoResponse.toResponse(produto);
+            return mapperProdutoToProdutoResponse.toResponse(produto);
+        }
     }
-}
+
 
