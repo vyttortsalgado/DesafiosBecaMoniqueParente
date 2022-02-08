@@ -69,8 +69,9 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 
 ✅4️⃣ Linguage de Programação &	Frameworks
 
-<div style="display: inline_block"><img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" /></div>
-<div style="display: inline_block"><br/><img alt="Sring Boot" src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" /></div>
+<div style="display: inline_block"><br/>
+ <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" /></div>
+ <img alt="Sring Boot" src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" /></div>
  
 * JPA.
 * Lambdas.
