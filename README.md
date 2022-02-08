@@ -59,19 +59,18 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
 ✅3️⃣	Ferramentas.
-- GitHub - Serviço para nuvem.
-- Draw.io - Aplicar UML
-- Intelij - Desenvolvimento Java.
-- Postman - Simulação de Interface.
-- H2 - Banco de Dados.
+* Draw.io - Aplicar UML
+* Intelij - Desenvolvimento Java.
+* Postman - Simulação de Interface.
+* H2 - Banco de Dados.
 
 ✅4️⃣	Frameworks
-- JPA.
-- Spring Boot.
-- Lambdas.
-- JDBC.
-- JSON.
-- Swagger.
+* JPA.
+* Spring Boot.
+* Lambdas.
+* JDBC.
+* JSON.
+* Swagger.
 
 ✅5️⃣ Endpoints
  
