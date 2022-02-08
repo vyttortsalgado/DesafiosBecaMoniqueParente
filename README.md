@@ -69,11 +69,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 
 ✅4️⃣ Linguage de Programação &	Frameworks
 
-<a href="https://github.com/anuraghazra/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=MoniqqueParente&repo=github-readme-stats" />
-</a>
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=MoniqueParente&show_icons=true)
+<div style="display: inline_block"><br/><img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" /></div>
  
 * JPA.
 * Spring Boot.
