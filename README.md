@@ -16,15 +16,15 @@ ________________________________________________________________________________
 
 5️⃣ Endpoints.
 
-6️⃣6.Controllers.
+6️⃣ Controllers.
 
-7️⃣7.Services.
+7️⃣ Services.
 
-8️⃣8.DTOs.
+8️⃣ DTOs.
 
-9️⃣9.Mappers.
+9️⃣ Mappers.
 
-🔟10.Tratamento de Erros.
+🔟 Tratamento de Erros.
 
 🔴Seja Bem-Vindo(a)!!
 
