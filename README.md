@@ -66,7 +66,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 ✅4️⃣ Linguage de Programação.
 
 <div style="display: inline_block"><br/>
- <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+ <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" /><br/>
  
 ✅5️⃣ Frameworks.
 
