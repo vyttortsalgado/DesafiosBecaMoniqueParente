@@ -1,9 +1,9 @@
 # DesafiosBeca (NTT DATA Europe & LATAM) - Monique Parente [![Blog](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/monique13/)
 
-#header {
-	border-top: 10px solid #11242e;
-	background: #193442;
- text: "Mentor Flavius Gama"
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+	background: #3F5C6B;
 }
 ______________________________________________________________________________________________________________________________________________________________________________
 
