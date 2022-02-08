@@ -33,7 +33,7 @@ ________________________________________________________________________________
 
 Curso recomendado: 
 
-[!Blog](https://nttdatalearn.udemy.com/course/fundamentos-de-programacao-com-java/learn/lecture/5740792#announcements)]
+[!Blog](https://img.shields.io/website-up-down-green-red/http/monip.org.svg website:https://nttdatalearn.udemy.com/course/fundamentos-de-programacao-com-java/learn/lecture/5740792#announcements)]
 
 
 ______________________________________________________________________________________________________________________________________________________________________________
