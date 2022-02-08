@@ -21,4 +21,13 @@ public class ProdutoDtoRequest {
     @NotBlank(message = "Por favor, preencha este campo.")
     @Size(min = 4, message = "Digite mais do q 4 letras")
     private String marca;
+
+
+//    try{
+//        System.out.println(produto.getNome(3)+ " " + produto.getMarca(3));
+//    }catch(MethodArgumentNotValidException e){
+//        System.out.println("Preencha os campos com mais de 3 caracteres");
+//    }finally{
+//        System.out.println("Fim Try-Catch");
+//    }
 }
