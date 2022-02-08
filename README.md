@@ -1,24 +1,34 @@
-# DesafiosBeca-MoniqueParente
-
-# Desafio(1) Beca : Modelo Conceitual
+# DesafiosBeca - MoniqueParente
 
 Nome: Monique Parente Lima.|
 Categoria: CJ Junior – Center.| 
 Mentor: Flavius Gama.
 ______________________________________________________________________________________________________________________________________________________________________________
-1.	Pensamentos Iniciais de Estruturação.
-2.	Resumo da aplicação.
-3.	Ferramentas.
-4.	Frameworks.
-5. Endpoints
+#Sumário
+
+1️⃣	Pensamentos Iniciais de Estruturação.
+2️⃣ Resumo da aplicação.
+3️⃣ Ferramentas.
+4️⃣ Frameworks.
+5️⃣ Endpoints
+6️⃣6.Controllers
+7️⃣7.Services
+8️⃣8.DTOs
+9️⃣9.Mappers
+🔟10.Tratamento de Erros
+
+🔴Seja Bem-Vindo(a)!!
+
 ______________________________________________________________________________________________________________________________________________________________________________
-1.	Pensamentos Iniciais de Estruturação.
+#Documentação
+
+✅1️⃣ Pensamentos Iniciais de Estruturação. 
 
 Para introduzir alguns pensamentos nesse tópico devemos planejar algumas estratégias que de início podem parecer imaturas porém vão se tornar mais concretas, ágeis e compactas para evitar erros de execução.  
 
 Algumas dicas para estruturação de um sistema, pensar de forma objetiva, escolher um substantivo adequado para definir uma entidade, utilizar de raciocínio lógico inspirado em programação orienta objeto e por fim verificar a normalização. Existem diversos ambientes nos quais podem ser utilizados para realizar um Modelo de Entidade Relacional (MER), alguns exemplos: BrModelo, Draw.oi, entre outros.
 
-2.	Resumo da Aplicação
+✅2️⃣ Resumo da Aplicação.
 
 Plano de Negócios.
 
@@ -39,17 +49,22 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
  •	Restrições:
 - Tratamento de erros relacionados ao desenvolvimento e versionamento.
 
-3.	Ferramentas
-- GitHub.
-- Intelij.
-- Draw.io.
-- Postman
+✅3️⃣	Ferramentas.
+- GitHub - Serviço para nuvem.
+- Draw.io - Aplicar UML
+- Intelij - Desenvolvimento Java.
+- Postman - Simulação de Interface.
+- H2 - Banco de Dados.
 
-4.	Frameworks
+✅4️⃣	Frameworks
 - JPA.
 - Spring Boot.
+- Lambdas.
+- JDBC.
+- JSON.
+- Swagger.
 
-5. Endpoints
+✅5️⃣ Endpoints
  
 |Requisições          | Descrição                                |
 |---------------------|------------------------------------------|
