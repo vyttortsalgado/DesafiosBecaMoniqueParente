@@ -65,12 +65,14 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 * H2 - Banco de Dados.
 
 ✅4️⃣	Frameworks
+`/
 * JPA.
 * Spring Boot.
 * Lambdas.
 * JDBC.
 * JSON.
 * Swagger.
+`
 
 ✅5️⃣ Endpoints
  
