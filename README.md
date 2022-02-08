@@ -70,8 +70,7 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 ✅4️⃣ Linguage de Programação &	Frameworks
 
 <div style="display: inline_block"><br/>
-<imp align="center" alt="Java" src= "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
- </div><br/>
+<imp align="center" alt="Java" src= "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" /></div>
  
 * JPA.
 * Spring Boot.
