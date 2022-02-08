@@ -15,19 +15,13 @@ ________________________________________________________________________________
 
 3️⃣ Ferramentas.
 
-4️⃣ Frameworks.
+4️⃣ Linguagem de Programação
 
-5️⃣ Endpoints.
+5️⃣ Frameworks.
 
-6️⃣ Controllers.
+6️⃣ Endpoints.
 
-7️⃣ Services.
-
-8️⃣ DTOs.
-
-9️⃣ Mappers.
-
-🔟 Tratamento de Erros.
+7️⃣ Tratamento de Erros.
 
 Curso recomendado: 
 
@@ -69,19 +63,21 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
 * Postman - Simulação de Interface.
 * H2 - Banco de Dados.
 
-✅4️⃣ Linguage de Programação &	Frameworks
+✅4️⃣ Linguage de Programação.
 
 <div style="display: inline_block"><br/>
  <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
- <img alt="Sring Boot" src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white" /></div>
  
+✅5️⃣ Frameworks.
+
+* Spring Boot. 
 * JPA.
 * Lambdas.
 * JDBC.
 * JSON.
 * Swagger.
 
-✅5️⃣ Endpoints
+✅6️⃣ Endpoints.
  
 |Requisições          | Descrição                                |
 |---------------------|------------------------------------------|
@@ -138,6 +134,12 @@ Conclusão, o usuário deste site poderá cadastrar uma venda através dos cadas
     ]
 }
 ``` 
+ 
+ ✅7️⃣ Tratamento de Erros.
+ 
+ Tipos tratados:
+ `/MethodArgumentNotValidException`
+ `/UnexpectedTypeException`
  
  
  
