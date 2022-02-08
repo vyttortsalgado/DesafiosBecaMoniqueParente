@@ -8,6 +8,6 @@ public class MpPecasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MpPecasApplication.class, args);
-	}
 
+	}
 }
