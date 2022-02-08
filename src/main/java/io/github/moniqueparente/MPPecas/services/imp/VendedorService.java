@@ -10,6 +10,7 @@ import io.github.moniqueparente.MPPecas.repository.VendedorRepository;
 import io.github.moniqueparente.MPPecas.services.VendedorServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,7 +26,8 @@ public class VendedorService implements VendedorServiceInterface {
     private final MapperVendedorAtualizar mapperVendedorAtualizar;
 
 
-    public VendedorDtoResponse criar (@Valid VendedorDtoRequest vendedorDtoRequest){
+    public VendedorDtoResponse criar (@RequestBody @Valid VendedorDtoRequest vendedorDtoRequest){
+
         Vendedor vendedor = mapperVendedorRequestToVendedor.toModel(vendedorDtoRequest);
 
         vendedorRepository.save(vendedor);
@@ -35,7 +37,8 @@ public class VendedorService implements VendedorServiceInterface {
         return  vendedorDtoResponse;
     }
 
-    public VendedorDtoResponse atualizar (VendedorDtoRequest vendedorDtoRequest, Integer id){
+    public VendedorDtoResponse atualizar (@RequestBody @Valid VendedorDtoRequest vendedorDtoRequest, Integer id){
+
         Vendedor vendedorObtido = vendedorRepository.findById(id).get();
 
         mapperVendedorAtualizar.atualizar(vendedorDtoRequest, vendedorObtido);

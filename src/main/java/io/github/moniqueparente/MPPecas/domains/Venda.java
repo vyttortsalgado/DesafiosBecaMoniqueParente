@@ -3,7 +3,6 @@ package io.github.moniqueparente.MPPecas.domains;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,15 +26,14 @@ public class Venda {
     private Cliente cliente;
 
     @OneToMany
-    @ToString.Exclude
     private List<ItemVenda> itemVendaLista;
 
-    double valorTotal(){
+    String valorTotal(){
 
         double precototal = 0;
         for(ItemVenda itemVenda : this.itemVendaLista){
             precototal += itemVenda.getValor();
 
-        } return  precototal;
+        } return String.format("TOTAL: %.2f", precototal);
     }
 }

@@ -3,14 +3,11 @@ package io.github.moniqueparente.MPPecas.domains;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
@@ -22,12 +19,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "{campo.not.blank}")
-    @Pattern(regexp = "^[A-Z]+(.)*")
     private String nome;
-
-    @CPF
-    @NotBlank(message = "{campo.not.blank}")
     private String cpf;
 
 }

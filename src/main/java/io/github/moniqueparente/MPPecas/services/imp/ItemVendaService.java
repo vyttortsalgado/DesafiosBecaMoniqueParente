@@ -10,6 +10,7 @@ import io.github.moniqueparente.MPPecas.repository.ItemVendaRepository;
 import io.github.moniqueparente.MPPecas.services.ItemVendaServiceInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,7 +26,8 @@ public class ItemVendaService implements ItemVendaServiceInterface {
     private final MapperItemVendaAtualizar mapperItemVendaAtualizar;
 
 
-    public ItemVendaDtoResponse criar (@Valid ItemVendaDtoRequest itemVendaDtoRequest){
+    public ItemVendaDtoResponse criar (@RequestBody @Valid ItemVendaDtoRequest itemVendaDtoRequest){
+
         ItemVenda itemVenda = mapperItemVendaRequestToItemVenda.toModel(itemVendaDtoRequest);
 
         itemVendaRepository.save(itemVenda);
@@ -35,7 +37,7 @@ public class ItemVendaService implements ItemVendaServiceInterface {
         return itemVendaDtoResponse;
     }
 
-    public ItemVendaDtoResponse atualizar(ItemVendaDtoRequest itemVendaDtoRequest, Integer id){
+    public ItemVendaDtoResponse atualizar(@RequestBody @Valid ItemVendaDtoRequest itemVendaDtoRequest, Integer id){
         ItemVenda itemVendaObtido = itemVendaRepository.findById(id).get();
 
         mapperItemVendaAtualizar.atualizar(itemVendaDtoRequest, itemVendaObtido);

@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 
 @Data
 @Entity
@@ -16,10 +15,11 @@ public class ItemVenda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
+    //@Positive(message = "{valor.not.valid}")
     private Double valor;
 
-    @Min(value = 1)
+    //@Min(value = 1, message = "{quantidade.not.valid}")
     private Integer quantidade;
 
     @OneToOne
