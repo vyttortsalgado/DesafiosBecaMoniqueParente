@@ -9,19 +9,23 @@ ________________________________________________________________________________
 
 * Seja Bem-Vindo(a)!!
 
-1️⃣ [Desafio 1](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/features-modificacao/README.md)<br/>
+✨ [Desafio 1](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/features-modificacao/README.md)<br/>
 
-2️⃣ [Desafio 2](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio2/README.md)<br/>
+✨ [Desafio 2](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio2/README.md)<br/>
 
-3️⃣ Ferramentas.
+✨ [Desafio 3](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio3/README.md)<br/>
 
-4️⃣ Linguagem de Programação
+✨ [Desafio 4](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio4/README.md)<br/>
 
-5️⃣ Frameworks.
+✨ [Desafio 5](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio5/README.md)<br/>
 
-6️⃣ Endpoints.
+✨ [Desafio 6](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio6/README.md)<br/>
 
-7️⃣ Tratamento de Erros.
+✨ [Desafio 7](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio7/README.md)<br/>
+
+✨ [Desafio 8](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio8/README.md)<br/>
+
+
 
 Curso recomendado: 
 
