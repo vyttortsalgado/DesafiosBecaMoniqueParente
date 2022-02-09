@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 * Seja Bem-Vindo(a)!!
 
-1️⃣ [Curso Cod3r - Udemy](https://nttdatalearn.udemy.com/course/fundamentos-de-programacao-com-java/learn/lecture/5740792#announcements)<br/>
+1️⃣ [Desafio 1](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/features-modificacao/README.md)<br/>
 
 2️⃣ Resumo da aplicação.
 
