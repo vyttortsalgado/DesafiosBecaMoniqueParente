@@ -15,12 +15,7 @@ public class VendaDtoRequest {
 
     private Integer id;
 
-    @NotBlank(message = "Por favor, preencha estes campos!")
     private VendedorDtoRequest vendedor;
-
-    @NotBlank(message = "Por favor, preencha estes campos!")
     private ClienteDtoRequest cliente;
-
-    @NotBlank(message = "Por favor, preencha os campos!")
     private List<ItemVenda> itemVendaLista;
 }
