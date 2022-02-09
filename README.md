@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 1️⃣ [Desafio 1](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/features-modificacao/README.md)<br/>
 
-2️⃣ Resumo da aplicação.
+2️⃣ [Desafio 2](https://github.com/MoniqueParente/DesafiosBecaMoniqueParente/blob/feature-desafio2/README.md)<br/>
 
 3️⃣ Ferramentas.
 
