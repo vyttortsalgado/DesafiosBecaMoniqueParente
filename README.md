@@ -12,7 +12,8 @@ Entender o conceito POO.
 Criar uma modelagem
 Escrever um resumo sobre a API.
 
-Crie um projeto Spring Boot (https://start.spring.io/), implemente as classes feitas na modelagem em um pacote.
+Crie um projeto Spring Boot 
+implemente as classes feitas na modelagem em um pacote.
 
 Crie um repositório no seu git pessoal “becaDesafiosSeuNome” e utilize para entrega de todos os desafios.
 
