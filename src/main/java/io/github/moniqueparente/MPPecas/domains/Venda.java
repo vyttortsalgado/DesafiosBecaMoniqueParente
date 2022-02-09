@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -27,6 +29,8 @@ public class Venda {
 
     @OneToMany
     private List<ItemVenda> itemVendaLista;
+
+    private LocalDateTime dataVenda = LocalDateTime.now();
 
     String valorTotal(){
 
